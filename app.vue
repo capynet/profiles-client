@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <UContainer>
+  <UContainer class="pt-8">
     <suspense>
       <NuxtPage />
     </suspense>

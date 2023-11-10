@@ -14,9 +14,6 @@ dependencies:
   '@sanity/client':
     specifier: ^6.7.0
     version: 6.7.0
-  swiper:
-    specifier: ^11.0.3
-    version: 11.0.3
   vue3-google-map:
     specifier: ^0.18.0
     version: 0.18.0(vue@3.3.7)
@@ -6888,11 +6885,6 @@ packages:
       csso: 5.0.5
       picocolors: 1.0.0
     dev: true
-
-  /swiper@11.0.3:
-    resolution: {integrity: sha512-MyV9ooQsriAe2EibeamqewLjgCfSvl2xoyratl6S3ln5BXDL4BzlO6mxcbLMCzQL6Z60b/u0AS/nKrepL0+TAg==}
-    engines: {node: '>= 4.7.0'}
-    dev: false
 
   /tailwind-config-viewer@1.7.3(tailwindcss@3.3.5):
     resolution: {integrity: sha512-rgeFXe9vL4njtaSI1y2uUAD1aRx05RYHbReN72ARAVEVSlNmS0Zf46pj3/ORc3xQwLK/AzbaIs6UFcK7hJSIlA==}
