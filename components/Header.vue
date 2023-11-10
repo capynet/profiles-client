@@ -10,9 +10,7 @@ const languageOptions = [[{
   label: 'Español',
   icon: 'i-heroicons-pencil-square-20-solid',
   click: () => {
-    console.log(locale.value);
     locale.value = 'es'
-    console.log(locale.value);
   }
 }, {
   label: 'Inglés',

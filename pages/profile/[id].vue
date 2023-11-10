@@ -23,19 +23,26 @@ const callback = (entry) => {
 }
 
 onMounted(() => {
-  const observer = new IntersectionObserver(callback, {
-    rootMargin: '-1px 0px 0px 0px',
-    threshold: [1],
-  });
+  if (header.value !== null) {
+    const observer = new IntersectionObserver(callback, {
+      rootMargin: '-1px 0px 0px 0px',
+      threshold: [1],
+    });
 
-  observer.observe(header.value);
+    observer.observe(header.value as HTMLElement);
+  }
+
 })
 </script>
 
 <template>
   <div class='flex flex-col sm:flex-row'>
 
-    <header ref="header" class="pb-6 sticky top-0 bg-white duration-300">
+    <header
+      v-if='$device.isMobile'
+      ref="header"
+      class="pb-6 sticky top-0 bg-white duration-300"
+    >
       <h1 class='mb-6 text-3xl duration-300'>{{ data?.name }}</h1>
 
 
@@ -57,35 +64,45 @@ onMounted(() => {
           </a>
         </div>
       </h3>
-
-
     </header>
 
-    <div class='left w-full sm:w-6/12 p-6 order-1 sm:order-0'>
+    <SanityImage
+      v-if='$device.isMobile'
+      :asset-id='data?.main_picture.asset._ref'
+      auto='format'
+      :w='648'
+      :h='1152'
+      fit='crop'
+      crop='center'
+      class='mb-1'
+    />
+
+    <div class='left w-full sm:w-6/12 p-6'>
 
       <div>
-        <h1 class='mb-6'>{{ data?.name }}</h1>
 
+        <template v-if='$device.isDesktop'>
+          <h1 class='mb-6'>{{ data?.name }}</h1>
+          <h3>
+            <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
+            <span>Phone call</span>
+            <a href="tel:661111222" title="Call!">661-111-222</a>
+          </h3>
 
-        <h3>
-          <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
-          <span>Phone call</span>
-          <a href="tel:661111222" title="Call!">661-111-222</a>
-        </h3>
+          <h3>
+            <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
+            <span>Whatsapp</span>
+            <a href="tel:661111222" title="Call!">661-111-222</a>
+          </h3>
 
-        <h3>
-          <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
-          <span>Whatsapp</span>
-          <a href="tel:661111222" title="Call!">661-111-222</a>
-        </h3>
+          <h3>
+            <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
+            <span>Telegram</span>
+            <a href="tel:661111222" title="Call!">661-111-222</a>
+          </h3>
+        </template>
 
-        <h3>
-          <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
-          <span>Telegram</span>
-          <a href="tel:661111222" title="Call!">661-111-222</a>
-        </h3>
-
-        <p>Cuando me contactes dime que me has visto en [[prifiles]]</p>
+        <p>Cuando me contactes dime que me has visto en [[perfiles]]</p>
 
         <div>
           <p>[[Check]] Verificada</p>
@@ -93,36 +110,39 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class='mb-6'>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo molestias natus possimus soluta unde! Atque consequatur est expedita labore placeat quae recusandae. At dignissimos impedit incidunt ipsa nisi quisquam!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, repudiandae!</p>
-      </div>
+      <template v-if='$device.isDesktop'>
+        <div class='mb-6'>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo molestias natus possimus soluta unde! Atque consequatur est expedita labore placeat quae recusandae. At dignissimos impedit incidunt ipsa nisi quisquam!</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, repudiandae!</p>
+        </div>
 
-      <div>
-        <h2>Skills???????</h2>
-        .....
-      </div>
+        <div>
+          <h2>Skills???????</h2>
+          .....
+        </div>
 
-      <div>
-        <h2>¿Dónde estoy?</h2>
-        <a href="#" title="ver en google maps">Ver en google maps</a>
-        <suspense>
-          <ProfileMap :id='route.params.id as String'/>
+        <div>
+          <h2>¿Dónde estoy?</h2>
+          <a href="#" title="ver en google maps">Ver en google maps</a>
+          <suspense>
+            <ProfileMap :id='route.params.id as String'/>
 
-          <template #fallback>
-            Loading map...
-          </template>
-        </suspense>
-      </div>
+            <template #fallback>
+              Loading map...
+            </template>
+          </suspense>
+        </div>
+      </template>
 
       <p>Last update: {{ data?._updatedAt }}</p>
     </div>
 
-    <div class='right w-full sm:w-6/12 order-0 sm:order-1'>
+    <div class='right w-full sm:w-6/12'>
 
       <ul>
         <li class="mb-6">
           <SanityImage
+            v-if='$device.isDesktop'
             :asset-id='data?.main_picture.asset._ref'
             auto='format'
             :w='648'
