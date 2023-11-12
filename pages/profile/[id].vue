@@ -74,98 +74,110 @@ onMounted(() => {
       :h='1152'
       fit='crop'
       crop='center'
-      class='mb-1'
+      class='mb-6 rounded-lg'
     />
 
-    <div class='left w-full sm:w-6/12 p-6'>
+    <template v-if='$device.isDesktop'>
+      <h1 class='mb-6'>{{ data?.name }}</h1>
+      <h3>
+        <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
+        <span>Phone call</span>
+        <a href="tel:661111222" title="Call!">661-111-222</a>
+      </h3>
 
-      <div>
+      <h3>
+        <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
+        <span>Whatsapp</span>
+        <a href="tel:661111222" title="Call!">661-111-222</a>
+      </h3>
 
-        <template v-if='$device.isDesktop'>
-          <h1 class='mb-6'>{{ data?.name }}</h1>
-          <h3>
-            <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
-            <span>Phone call</span>
-            <a href="tel:661111222" title="Call!">661-111-222</a>
-          </h3>
+      <h3>
+        <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
+        <span>Telegram</span>
+        <a href="tel:661111222" title="Call!">661-111-222</a>
+      </h3>
+    </template>
 
-          <h3>
-            <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
-            <span>Whatsapp</span>
-            <a href="tel:661111222" title="Call!">661-111-222</a>
-          </h3>
+    <div class="text-sm flex items-center mb-4 p-2 bg-amber-200 rounded-sm">
+      <UIcon name="i-heroicons-sparkles" class="w-8 h-8 mr-2 bg-amber-600"/>
+      Cuando me contactes dime que me has visto en [[perfiles]]
+    </div>
 
-          <h3>
-            <UIcon name="i-heroicons-phone" class="w-8 h-8"/>
-            <span>Telegram</span>
-            <a href="tel:661111222" title="Call!">661-111-222</a>
-          </h3>
+    <p class="flex items-center mb-2">
+      <UIcon name="i-heroicons-eye" class="w-5 h-5 mr-2"/>
+      <strong>400 visitas</strong> &nbsp; <span>el día de hoy.</span>
+    </p>
+
+    <div class="mb-2">
+      <p class="flex items-center">
+        <UIcon name="i-heroicons-shield-check" class="w-5 h-5 mr-2 bg-lime-900"/>
+        <span class="text-lime-900">Fotos verificadas.</span>
+      </p>
+      <p class="text-sm text-slate-400 ml-6">Las fotos han sido verificadas y son reales.</p>
+    </div>
+
+    <p class="flex items-center">
+      <UIcon name="i-heroicons-calendar" class="w-5 h-5 mr-2"/>
+      Perfil actualizado el {{ data?._updatedAt }}
+    </p>
+
+
+    <ul>
+      <li class="mb-6">
+        <SanityImage
+          v-if='$device.isDesktop'
+          :asset-id='data?.main_picture.asset._ref'
+          auto='format'
+          :w='648'
+          :h='1152'
+          fit='crop'
+          crop='center'
+          class='mb-1 rounded-lg'
+        />
+      </li>
+
+      <li v-for='(pic, i) in data?.gallery?.pictures' :key='i' class="mb-6">
+        <SanityImage
+          :asset-id='pic.asset._ref'
+          auto='format'
+          :w='648'
+          :h='1152'
+          fit='crop'
+          crop='center'
+          class='rounded-lg'
+        />
+      </li>
+    </ul>
+
+
+    <div class="bg-slate-50 py-4 mb-6">
+      <h2 class="text-2xl font-bold mb-2">Sobre mi</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo molestias natus possimus soluta unde! Atque consequatur est expedita labore placeat quae recusandae. At dignissimos impedit incidunt ipsa nisi quisquam!</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, repudiandae!</p>
+    </div>
+
+    <div class="mb-6">
+      <UIcon name="i-heroicons-phone" class="w-10 h-10"/>
+      <UIcon name="i-heroicons-phone" class="w-10 h-10"/>
+      <UIcon name="i-heroicons-phone" class="w-10 h-10"/>
+      <UIcon name="i-heroicons-phone" class="w-10 h-10"/>
+      <UIcon name="i-heroicons-phone" class="w-10 h-10"/>
+      <UIcon name="i-heroicons-phone" class="w-10 h-10"/>
+    </div>
+
+    <div class="bg-slate-50 py-4">
+      <h2 class="text-2xl font-bold mb-2">¿Dónde estoy?</h2>
+      <a href="#" title="ver en google maps" class="underline text-blue-900 mb-2 block">Ver en google maps</a>
+
+      <suspense>
+        <ProfileMap :id='route.params.id as String'/>
+
+        <template #fallback>
+          Loading map...
         </template>
-
-        <p>Cuando me contactes dime que me has visto en [[perfiles]]</p>
-
-        <div>
-          <p>[[Check]] Verificada</p>
-          <p>mas pequeño: Esta parsona se le verificaron las fotos bla bla bla</p>
-        </div>
-      </div>
-
-      <template v-if='$device.isDesktop'>
-        <div class='mb-6'>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur explicabo molestias natus possimus soluta unde! Atque consequatur est expedita labore placeat quae recusandae. At dignissimos impedit incidunt ipsa nisi quisquam!</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla, repudiandae!</p>
-        </div>
-
-        <div>
-          <h2>Skills???????</h2>
-          .....
-        </div>
-
-        <div>
-          <h2>¿Dónde estoy?</h2>
-          <a href="#" title="ver en google maps">Ver en google maps</a>
-          <suspense>
-            <ProfileMap :id='route.params.id as String'/>
-
-            <template #fallback>
-              Loading map...
-            </template>
-          </suspense>
-        </div>
-      </template>
-
-      <p>Last update: {{ data?._updatedAt }}</p>
+      </suspense>
     </div>
 
-    <div class='right w-full sm:w-6/12'>
-
-      <ul>
-        <li class="mb-6">
-          <SanityImage
-            v-if='$device.isDesktop'
-            :asset-id='data?.main_picture.asset._ref'
-            auto='format'
-            :w='648'
-            :h='1152'
-            fit='crop'
-            crop='center'
-            class='mb-1'
-          />
-        </li>
-
-        <li v-for='(pic, i) in data?.gallery?.pictures' :key='i' class="mb-6">
-          <SanityImage
-            :asset-id='pic.asset._ref'
-            auto='format'
-            :w='648'
-            :h='1152'
-            fit='crop'
-            crop='center'
-            class=''
-          />
-        </li>
-      </ul>
-    </div>
   </div>
 
 </template>
