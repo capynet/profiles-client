@@ -20,6 +20,13 @@ const languageOptions = [[{
   }
 }]]
 
+const user = useSupabaseUser()
+
+const logOut = async () => {
+  const supabase = useSupabaseClient()
+  const {error} = supabase.auth.signOut()
+  if (error) console.log(error)
+}
 </script>
 
 <template>
@@ -40,6 +47,15 @@ const languageOptions = [[{
             <UButton :label="languagesMap[locale]" trailing-icon="i-heroicons-globe-alt"/>
           </UDropdown>
 
+        </div>
+
+        <div v-if="user">
+          {{ user?.email }}
+          <a href="#" @click="logOut">Cerrar sesión</a>
+        </div>
+
+        <div v-if="!user">
+          <a href="/login">Iniciar sesión</a>
         </div>
 
       </div>

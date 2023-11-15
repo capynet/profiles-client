@@ -12,3 +12,6 @@ Anon / public : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 Secreta (no usar nuca del cliente) eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1cXJrbnp2emhlcnV6b25sbGllIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDA2NDc0NCwiZXhwIjoyMDE1NjQwNzQ0fQ.yqiY2XmL3qRaCjaaDhEAxeXmPPadwfu38xsAMSI-BI4
 
 url: https://duqrknzvzheruzonllie.supabase.co
+
+callback url para supabase https://duqrknzvzheruzonllie.supabase.co/auth/v1/callback
+/home/capy/www/profiles/client/misc/credentials.json esta guardado por las dudas. no es que lo use.
