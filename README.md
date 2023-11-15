@@ -1,75 +1,14 @@
-# Nuxt 3 Minimal Starter
+# Credentials:
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Supabase
 
-## Setup
+Project:
+escorts-malaga / 3@Jyk!2gwNyb5G4
 
-Make sure to install the dependencies:
+Project API keys
 
-```bash
-# npm
-npm install
+Anon / public : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1cXJrbnp2emhlcnV6b25sbGllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAwNjQ3NDQsImV4cCI6MjAxNTY0MDc0NH0.lJ8QKHoK4lawKOhNjuznERbe2A1EIg5oEw-77SpS3DY
 
-# pnpm
-pnpm install
+Secreta (no usar nuca del cliente) eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1cXJrbnp2emhlcnV6b25sbGllIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDA2NDc0NCwiZXhwIjoyMDE1NjQwNzQ0fQ.yqiY2XmL3qRaCjaaDhEAxeXmPPadwfu38xsAMSI-BI4
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+url: https://duqrknzvzheruzonllie.supabase.co
