@@ -20,13 +20,6 @@ const languageOptions = [[{
   }
 }]]
 
-const user = useSupabaseUser()
-
-const logOut = async () => {
-  const supabase = useSupabaseClient()
-  const {error} = supabase.auth.signOut()
-  if (error) console.log(error)
-}
 </script>
 
 <template>
@@ -38,25 +31,21 @@ const logOut = async () => {
           <img src="/img/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Profiles</span>
         </NuxtLink>
+
         <div class="flex items-center lg:order-2">
-          <ColorModePicker/>
+          <ColorModePicker class="mr-2"/>
 
           <UDropdown
+            class="mr-2"
             :items="languageOptions"
             mode="hover">
             <UButton :label="languagesMap[locale]" trailing-icon="i-heroicons-globe-alt"/>
           </UDropdown>
 
+          <UserMenu/>
         </div>
 
-        <div v-if="user">
-          {{ user?.email }}
-          <a href="#" @click="logOut">Cerrar sesión</a>
-        </div>
 
-        <div v-if="!user">
-          <a href="/login">Iniciar sesión</a>
-        </div>
 
       </div>
     </nav>
