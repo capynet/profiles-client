@@ -4,9 +4,7 @@ const user = useSupabaseUser()
 const options = [[{
   label: 'My profile',
   icon: 'i-heroicons-adjustments-horizontal',
-  click: () => {
-    console.log('settings');
-  }
+  click: () => navigateTo('/user')
 }, {
   label: 'Cerrar sesión',
   icon: 'i-heroicons-arrow-right-on-rectangle',
