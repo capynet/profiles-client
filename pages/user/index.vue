@@ -8,6 +8,7 @@ const user = await getFullUser()
 const state = reactive({
   name: user?.extended?.name || undefined,
   location: user?.extended?.location || undefined,
+  mainPicture: user?.extended?.mainPicture || undefined,
 })
 
 const validate = (state: any): FormError[] => {
@@ -18,11 +19,28 @@ const validate = (state: any): FormError[] => {
 }
 
 async function onSubmit(e: FormSubmitEvent<any>) {
+  console.log("?");
+  console.log(e.data);
+
   const {res} = await $fetch('/api/profile', {
     method: 'post',
     body: e.data
   })
+
+
 }
+
+// @fixme https://github.com/vueuse/vueuse/blob/main/packages/core/useFileDialog/demo.vue puedo extraerlo a un componente.
+
+// const {files, open, reset, onChange: onUserSelectMainPicture} = useFileDialog({
+//   accept: 'image/*', // Set to accept only image files
+// })
+//
+// onUserSelectMainPicture((files) => {
+//   console.log(files[0]);
+//   /** do something with files */
+// })
+
 </script>
 
 <template>
@@ -35,10 +53,13 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       <UInput v-model="state.location"/>
     </UFormGroup>
 
-    <input type="file" name="main_picture" accept="image/*"/>
+<!--    <UFormGroup label="location" name="location">-->
+<!--      <UButton @click="open">Select main picture</UButton>-->
+<!--    </UFormGroup>-->
+
 
     <UButton type="submit">
-      Submit
+      Save
     </UButton>
   </UForm>
 </template>

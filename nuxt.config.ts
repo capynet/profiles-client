@@ -8,6 +8,7 @@ export default defineNuxtConfig({
         '@nuxtjs/color-mode',
         '@nuxtjs/i18n',
         '@nuxtjs/supabase',
+        '@vueuse/nuxt',
     ],
     sanity: {
         projectId: 'f68tamz8',
