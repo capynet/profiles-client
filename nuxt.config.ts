@@ -9,6 +9,7 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxtjs/supabase',
         '@vueuse/nuxt',
+        '@nuxt/image',
     ],
     sanity: {
         projectId: 'f68tamz8',

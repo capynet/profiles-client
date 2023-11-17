@@ -18,13 +18,16 @@
     "@vueuse/core": "^10.6.1",
     "@vueuse/nuxt": "^10.6.1",
     "nuxt": "^3.8.0",
+    "sass": "^1.69.5",
     "vue": "^3.3.7",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@nuxt/image": "^1.0.0",
     "@nuxt/ui": "^2.10.0",
     "@nuxtjs/sanity": "^1.8.1",
     "@sanity/client": "^6.7.0",
+    "vue-advanced-cropper": "^2.8.8",
     "vue3-google-map": "^0.18.0"
   }
 }

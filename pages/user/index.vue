@@ -30,17 +30,6 @@ async function onSubmit(e: FormSubmitEvent<any>) {
 
 }
 
-// @fixme https://github.com/vueuse/vueuse/blob/main/packages/core/useFileDialog/demo.vue puedo extraerlo a un componente.
-
-// const {files, open, reset, onChange: onUserSelectMainPicture} = useFileDialog({
-//   accept: 'image/*', // Set to accept only image files
-// })
-//
-// onUserSelectMainPicture((files) => {
-//   console.log(files[0]);
-//   /** do something with files */
-// })
-
 </script>
 
 <template>
@@ -53,9 +42,7 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       <UInput v-model="state.location"/>
     </UFormGroup>
 
-<!--    <UFormGroup label="location" name="location">-->
-<!--      <UButton @click="open">Select main picture</UButton>-->
-<!--    </UFormGroup>-->
+    <ImageUploader/>
 
 
     <UButton type="submit">
