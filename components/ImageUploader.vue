@@ -51,7 +51,8 @@ const onCropChange = (result) => {
     }
   }
 }
-
+//https://codesandbox.io/s/vue-advanced-cropper-twitter-suoyc?file=/src/App.vue
+//https://advanced-cropper.github.io/vue-advanced-cropper/guides/advanced-recipes.html#dynamic-cropper-size
 </script>
 
 <template>

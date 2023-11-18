@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const email = ref('')
+const globalConfig = useRuntimeConfig();
+
 const signInWithOtp = async () => {
   const {error} = await supabase.auth.signInWithOtp({
     email: email.value,
@@ -13,7 +15,8 @@ const signInWithOtp = async () => {
 
 const signInWithGoogle = async () => {
   const {data, error} = await supabase.auth.signInWithOAuth({
-    provider: 'google'
+    provider: 'google',
+    options: {redirectTo: globalConfig.public.siteUrl}
   })
 
   if (error) {

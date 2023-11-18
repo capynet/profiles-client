@@ -15,6 +15,7 @@ const logOut = async () => {
   const supabase = useSupabaseClient()
   const {error} = supabase.auth.signOut()
   if (error) console.log(error)
+  navigateTo('/')
 }
 </script>
 

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    devtools: {enabled: true},
+    devtools: {enabled: false},
     modules: [
         '@nuxtjs/sanity',
         '@nuxt/ui',
@@ -11,6 +11,11 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@nuxt/image',
     ],
+    runtimeConfig: {
+        public: {
+            siteUrl: process.env.SITE_URL
+        }
+    },
     sanity: {
         projectId: 'f68tamz8',
         dataset: "production"
@@ -33,5 +38,8 @@ export default defineNuxtConfig({
                 '/profile/*'
             ],
         }
+    },
+    tailwindcss: {
+        viewer: false
     }
 })
