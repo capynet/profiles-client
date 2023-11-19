@@ -2,9 +2,13 @@
 import {Cropper} from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
+const cropperEl = ref(null)
 const isOpen = ref(false)
 const file = shallowRef()
 const url = useObjectUrl(file)
+
+defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
 const {files, open, reset, onChange} = useFileDialog({
   accept: 'image/*'
@@ -15,10 +19,6 @@ onChange((files) => {
   isOpen.value = true
 })
 
-const cropperEl = ref(null)
-
-
-
 const stencilSize = ({boundaries}) => {
   return {
     width: boundaries.width,
@@ -26,16 +26,16 @@ const stencilSize = ({boundaries}) => {
   };
 }
 
-const onCropChange = (result) => {
-  console.log(result);
-}
-
 const processCroppedImage = () => {
+  const {canvas} = cropperEl.value.getResult()
+  emit('update:modelValue', canvas.toDataURL())
   isOpen.value = false
+  files.value = null
 }
 
 const resetCroppedImage = () => {
   isOpen.value = false
+  files.value = null
 }
 </script>
 
@@ -60,22 +60,21 @@ const resetCroppedImage = () => {
             image-restriction="stencil"
             :stencil-size="stencilSize"
             :stencil-props="{
-        lines: {},
-        handlers: {},
-        movable: false,
-        scalable: false,
-        aspectRatio: 9/16,
-        previewClass: 'twitter-cropper__stencil',
-      }"
+              lines: {},
+              handlers: {},
+              movable: false,
+              scalable: false,
+              aspectRatio: 9/16,
+              previewClass: 'twitter-cropper__stencil',
+            }"
             :transitions="false"
-            :canvas="false"
             :debounce="false"
             :src="url"
-            @change="onCropChange"
           />
         </div>
 
         <template #footer>
+          <p>Ajusta la imagen seleccionando la parte que mas te interesa.</p>
           <div class="flex justify-end">
             <UButton
               @click='resetCroppedImage'
