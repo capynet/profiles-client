@@ -15,3 +15,18 @@ url: https://duqrknzvzheruzonllie.supabase.co
 
 callback url para supabase https://duqrknzvzheruzonllie.supabase.co/auth/v1/callback
 /home/capy/www/profiles/client/misc/credentials.json esta guardado por las dudas. no es que lo use.
+
+
+- hide google api key, sanity and any other private value.
+- restrict google m,aps api key at google console. https://console.cloud.google.com/apis/credentials/key/3d88c3dd-1e46-4ca8-be8b-65552d8a9ed5?project=malagaescorts
+- Poner un icono de mapa para mostrar la ubicación en el mapa si se pincha en la persona. Poner un mapa en el perfil también
+- ^PAra el mapa: "Llevame hasta ahi", "envialo a mi movil". A los markers que tengan marcado como favorito ponerle un micro corazon al lado.
+- la seleccion de mapa o lista tiene que persistir globalmente.
+- falta el paginador para el listado pero no puede afectar al mapa.
+- Añadir campos traducidos al ingles en sanity.
+- El telefono necesita algunso checkbox para indicar si soporta telegram y ws
+- Cuando se cambie de idiooma deberia hacer alguna animacion? digo para que vea que el txt ha cambiado
+- contador de visitas.
+  //https://codesandbox.io/s/vue-advanced-cropper-twitter-suoyc?file=/src/App.vue
+  //https://advanced-cropper.github.io/vue-advanced-cropper/guides/advanced-recipes.html#dynamic-cropper-size
+- Cambiar la seleccion de la imagen de sideover a modal full screen.

@@ -15,46 +15,21 @@ onChange((files) => {
   isOpen.value = true
 })
 
-const zoom = ref(0)
 const cropperEl = ref(null)
 
 
-const defaultSize = ({imageSize}) => {
-  return {
-    width: Math.max(imageSize.height, imageSize.width),
-    height: Math.max(imageSize.height, imageSize.width),
-  };
-}
 
 const stencilSize = ({boundaries}) => {
   return {
-    width: 324,
-    height: 576,
+    width: boundaries.width,
+    height: boundaries.height,
   };
 }
 
 const onCropChange = (result) => {
-  const cropper = cropperEl.value;
-  if (cropper) {
-    const {coordinates, imageSize} = cropper;
-    if (
-      imageSize.width / imageSize.height >
-      coordinates.width / coordinates.height
-    ) {
-      // Determine the position of slider bullet
-      // It's 0 if the stencil has the maximum size and it's 1 if the has the minimum size
-      zoom.value =
-        (cropper.imageSize.height - cropper.coordinates.height) /
-        (cropper.imageSize.height - cropper.sizeRestrictions.minHeight);
-    } else {
-      zoom.value =
-        (cropper.imageSize.width - cropper.coordinates.width) /
-        (cropper.imageSize.width - cropper.sizeRestrictions.minWidth);
-    }
-  }
+  console.log(result);
 }
-//https://codesandbox.io/s/vue-advanced-cropper-twitter-suoyc?file=/src/App.vue
-//https://advanced-cropper.github.io/vue-advanced-cropper/guides/advanced-recipes.html#dynamic-cropper-size
+
 const processCroppedImage = () => {
   isOpen.value = false
 }
@@ -76,7 +51,7 @@ const resetCroppedImage = () => {
     <USlideover v-model='isOpen'>
       <UCard class='flex flex-col flex-1' :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
 
-        <div class="mb-10">
+        <div class="flex justify-center h-full">
           <cropper
             ref="cropperEl"
             class="twitter-cropper"
@@ -95,7 +70,6 @@ const resetCroppedImage = () => {
             :transitions="false"
             :canvas="false"
             :debounce="false"
-            :default-size="defaultSize"
             :src="url"
             @change="onCropChange"
           />
@@ -132,8 +106,6 @@ const resetCroppedImage = () => {
 
 <style lang="scss">
 .twitter-cropper {
-  height: 576px;
-  width: 324px;
 
 
   &__stencil {
