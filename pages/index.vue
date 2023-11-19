@@ -28,71 +28,71 @@ const sortOptionsSelected = ref('newest')
       </template>
 
       <div>
-        <SearchFilters />
+        <SearchFilters/>
       </div>
     </UCard>
   </USlideover>
 
-  <div class='sm:flex'>
 
-    <div class='left w-full sm:w-3/12 p-6' v-if='$device.isDesktop'>
-      <h2 class='mb-4'>Filter</h2>
-      <SearchFilters />
-    </div>
-
-    <div class='right w-full sm:w-9/12'>
-
-      <div class='flex justify-start mb-2'>
-        <UButton
-          label='Filters'
-          @click='isOpen = true'
-          v-if='$device.isMobile'
-          size='xl'
-        />
-
-        <UButton
-          class='mr-2'
-          icon='i-heroicons-list-bullet'
-          size='xl'
-          :color='resViewMode === "list" ? "primary" : "gray"'
-          variant='solid'
-          label='List'
-          :trailing='false'
-          @click='resViewMode = "list"'
-        />
-
-        <UButton
-          icon='i-heroicons-map'
-          size='xl'
-          :color='resViewMode === "map" ? "primary" : "gray"'
-          variant='solid'
-          label='Map'
-          :trailing='false'
-          @click='resViewMode = "map"'
-        />
-
-        <URadioGroup
-          v-model='sortOptionsSelected'
-          :options='sortOptions'
-          class='sort-options ml-auto'
-          v-if='resViewMode === "list"'
-        >
-          <template #label='{ option }'>
-            <p class='italic'>
-              <UIcon :name='option.icon' />
-              {{ option.label }}
-            </p>
-          </template>
-        </URadioGroup>
-
-
-      </div>
-
-
-      <ProductsGrid v-if='resViewMode === "list"' :profiles='data' />
-      <ProductsMap v-if='resViewMode === "map"' :profiles='data' />
-    </div>
+  <div class='left w-full sm:w-3/12 p-6' v-if='$device.isDesktop'>
+    <h2 class='mb-4'>Filter</h2>
+    <SearchFilters/>
   </div>
+
+
+  <div class="heading flex justify-between items-center mb-4">
+    <UButton
+      label='Filters'
+      @click='isOpen = true'
+      v-if='$device.isMobile'
+      size='xl'
+      class=""
+    />
+
+    <div class="view-modes">
+      <UButton
+        class='mr-2'
+        icon='i-heroicons-list-bullet'
+        size='xl'
+        :color='resViewMode === "list" ? "primary" : "gray"'
+        variant='solid'
+        label='List'
+        :trailing='false'
+        @click='resViewMode = "list"'
+      />
+
+      <UButton
+        icon='i-heroicons-map'
+        size='xl'
+        :color='resViewMode === "map" ? "primary" : "gray"'
+        variant='solid'
+        label='Map'
+        :trailing='false'
+        @click='resViewMode = "map"'
+      />
+    </div>
+
+  </div>
+
+
+<div class="flex">
+  <URadioGroup
+    v-model='sortOptionsSelected'
+    :options='sortOptions'
+    class='sort-options mb-4 ml-auto'
+    v-if='resViewMode === "list"'
+  >
+    <template #label='{ option }'>
+      <p class='italic'>
+        <UIcon :name='option.icon'/>
+        {{ option.label }}
+      </p>
+    </template>
+  </URadioGroup>
+</div>
+
+  <ProductsGrid v-if='resViewMode === "list"' :profiles='data'/>
+  <ProductsMap v-if='resViewMode === "map"' :profiles='data'/>
 </template>
 
 <style>
@@ -100,11 +100,11 @@ const sortOptionsSelected = ref('newest')
   @apply flex;
 }
 
-.sort-options > fieldset > *{
+.sort-options > fieldset > * {
   @apply mr-3;
 }
 
-.sort-options > fieldset > *:last-child{
+.sort-options > fieldset > *:last-child {
   @apply mr-0;
 }
 </style>

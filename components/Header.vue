@@ -28,7 +28,7 @@ const languageOptions = [[{
       <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
 
         <NuxtLink to='/' class="flex items-center">
-          <img src="/img/logo.png" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo"/>
+          <img src="/img/logo.png" class="mr-3 h-6 sm:h-9" alt=""/>
           <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Profiles</span>
         </NuxtLink>
 
@@ -39,7 +39,11 @@ const languageOptions = [[{
             class="mr-2"
             :items="languageOptions"
             mode="hover">
-            <UButton :label="languagesMap[locale]" trailing-icon="i-heroicons-globe-alt"/>
+            <UButton
+              :label="languagesMap[locale]"
+              trailing-icon="i-heroicons-globe-alt"
+              size='xl'
+            />
           </UDropdown>
 
           <UserMenu/>

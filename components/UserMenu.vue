@@ -25,14 +25,16 @@ const logOut = async () => {
       class="mr-2"
       :items="options"
       mode="hover">
-      <UButton trailing-icon="i-heroicons-user-circle"/>
+      <NuxtImg
+        :src="user.user_metadata?.avatar_url"
+        class="rounded-full w-10 h-10"
+      />
     </UDropdown>
   </div>
 
   <div v-if="!user">
     <NuxtLink to="/login" title="Login">
-      <UButton trailing-icon="i-heroicons-user-circle"/>
+      <UButton trailing-icon="i-heroicons-user-circle" size='xl'/>
     </NuxtLink>
-
   </div>
 </template>

@@ -10,7 +10,7 @@
       >
         <UButton
           icon='i-heroicons-moon'
-          size='sm'
+          size='xl'
           variant='ghost'
           @click='$colorMode.preference = "light"'
         />
@@ -25,7 +25,7 @@
       >
         <UButton
           icon='i-heroicons-sun-20-solid'
-          size='sm'
+          size='xl'
           variant='ghost'
           @click='$colorMode.preference = "dark"'
         />
