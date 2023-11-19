@@ -2,6 +2,7 @@
 import {Cropper} from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
+const isOpen = ref(false)
 const file = shallowRef()
 const url = useObjectUrl(file)
 
@@ -11,6 +12,7 @@ const {files, open, reset, onChange} = useFileDialog({
 
 onChange((files) => {
   file.value = files[0]
+  isOpen.value = true
 })
 
 const zoom = ref(0)
@@ -53,20 +55,36 @@ const onCropChange = (result) => {
 }
 //https://codesandbox.io/s/vue-advanced-cropper-twitter-suoyc?file=/src/App.vue
 //https://advanced-cropper.github.io/vue-advanced-cropper/guides/advanced-recipes.html#dynamic-cropper-size
+const processCroppedImage = () => {
+  isOpen.value = false
+}
+
+const resetCroppedImage = () => {
+  isOpen.value = false
+}
 </script>
 
 <template>
   <UFormGroup label="location" name="location">
-    <UButton @click="open" label="Select main picture"/>
 
-    <cropper
-      ref="cropperEl"
-      class="twitter-cropper"
-      background-class="twitter-cropper__background"
-      foreground-class="twitter-cropper__foreground"
-      image-restriction="stencil"
-      :stencil-size="stencilSize"
-      :stencil-props="{
+    <UButton
+      @click="open"
+      label="Select main picture"
+      v-if="!files"
+    />
+
+    <USlideover v-model='isOpen'>
+      <UCard class='flex flex-col flex-1' :ui="{ body: { base: 'flex-1' }, ring: '', divide: 'divide-y divide-gray-100 dark:divide-gray-800' }">
+
+        <div class="mb-10">
+          <cropper
+            ref="cropperEl"
+            class="twitter-cropper"
+            background-class="twitter-cropper__background"
+            foreground-class="twitter-cropper__foreground"
+            image-restriction="stencil"
+            :stencil-size="stencilSize"
+            :stencil-props="{
         lines: {},
         handlers: {},
         movable: false,
@@ -74,13 +92,39 @@ const onCropChange = (result) => {
         aspectRatio: 9/16,
         previewClass: 'twitter-cropper__stencil',
       }"
-      :transitions="false"
-      :canvas="false"
-      :debounce="false"
-      :default-size="defaultSize"
-      :src="url"
-      @change="onCropChange"
-    />
+            :transitions="false"
+            :canvas="false"
+            :debounce="false"
+            :default-size="defaultSize"
+            :src="url"
+            @change="onCropChange"
+          />
+        </div>
+
+        <template #footer>
+          <div class="flex justify-end">
+            <UButton
+              @click='resetCroppedImage'
+              label='Cancelar'
+              size='xl'
+              class="mr-4"
+              color="black"
+            />
+
+            <UButton
+              @click='processCroppedImage'
+              label='Confirmar'
+              size='xl'
+            />
+          </div>
+
+        </template>
+
+
+      </UCard>
+    </USlideover>
+
+
   </UFormGroup>
 
 
@@ -90,7 +134,6 @@ const onCropChange = (result) => {
 .twitter-cropper {
   height: 576px;
   width: 324px;
-
 
 
   &__stencil {

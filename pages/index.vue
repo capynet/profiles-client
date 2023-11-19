@@ -27,9 +27,16 @@ const sortOptionsSelected = ref('newest')
         />
       </template>
 
-      <div>
+      <div class="mb-10">
         <SearchFilters/>
       </div>
+
+      <UButton
+        @click='isOpen = false'
+        label='Ver los 32 resultados'
+        size='xl'
+        block
+      />
     </UCard>
   </USlideover>
 
