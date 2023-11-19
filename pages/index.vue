@@ -79,11 +79,11 @@ const sortOptionsSelected = ref('newest')
   <URadioGroup
     v-model='sortOptionsSelected'
     :options='sortOptions'
-    class='sort-options mb-4 ml-auto'
+    class='sort-options mb-4 ml-auto border py-2 px-4 rounded-sm'
     v-if='resViewMode === "list"'
   >
     <template #label='{ option }'>
-      <p class='italic'>
+      <p class='italic flex items-center'>
         <UIcon :name='option.icon'/>
         {{ option.label }}
       </p>

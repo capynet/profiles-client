@@ -22,19 +22,24 @@ const logOut = async () => {
 <template>
   <div v-if="user">
     <UDropdown
-      class="mr-2"
+      class="flex items-center"
       :items="options"
       mode="hover">
-      <NuxtImg
+      <UAvatar
         :src="user.user_metadata?.avatar_url"
-        class="rounded-full w-10 h-10"
+        size="md"
       />
+
     </UDropdown>
   </div>
 
   <div v-if="!user">
     <NuxtLink to="/login" title="Login">
-      <UButton trailing-icon="i-heroicons-user-circle" size='xl'/>
+      <UAvatar
+        icon="i-heroicons-user-circle"
+        size="md"
+        class="border"
+      />
     </NuxtLink>
   </div>
 </template>
