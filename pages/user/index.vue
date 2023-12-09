@@ -42,9 +42,8 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       <UInput v-model="state.location"/>
     </UFormGroup>
 
-    <ImageUploader v-model="state.mainPicture"/>
-
     <img v-if="state.mainPicture" :src="state.mainPicture" alt="">
+    <ImageUploader v-model="state.mainPicture"/>
 
     <UButton type="submit">
       Save
