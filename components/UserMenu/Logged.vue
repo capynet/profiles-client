@@ -24,7 +24,7 @@ const logOut = async () => {
       class="mr-2"
       :items="options"
       mode="hover">
-      <UButton trailing-icon="i-heroicons-user-circle"/>
+      <UButton trailing-icon="i-heroicons-user-circle" color="white" />
     </UDropdown>
   </div>
 </template>
