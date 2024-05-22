@@ -12,15 +12,22 @@ onMounted(() => {
 })
 
 const options = computed(() => {
-  const loggedOptions = [[{
-    label: 'My profile',
-    icon: 'i-heroicons-adjustments-horizontal',
-    click: () => navigateTo('/user')
-  }, {
-    label: 'Cerrar sesión',
-    icon: 'i-heroicons-arrow-right-on-rectangle',
-    click: () => logOut()
-  }]]
+  const loggedOptions = [[
+    {
+      label: 'Profile',
+      icon: 'i-heroicons-adjustments-horizontal',
+      click: () => navigateTo('/user/profile')
+    },
+    {
+      label: 'Account',
+      icon: 'i-heroicons-adjustments-horizontal',
+      click: () => navigateTo('/user/account')
+    },
+    {
+      label: 'Cerrar sesión',
+      icon: 'i-heroicons-arrow-right-on-rectangle',
+      click: () => logOut()
+    }]]
   return isAuthenticated.value ? loggedOptions : []
 })
 

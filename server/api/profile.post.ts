@@ -5,13 +5,14 @@ export default defineEventHandler(async (event) => {
     const user = await serverSupabaseUser(event)
     const client = await serverSupabaseClient(event)
 
-    const {data} = await client.from('profiles').upsert({
+    const res = await client.from('products').upsert({
         name: body.name,
-        location: body.location,
+        description: body.description,
+        published: body.published,
+        // location: body.location,
         updated_at: new Date().toISOString().toLocaleString(),
         user: user.id
     }).select().single()
 
-
-    return {res: data}
+    return {res}
 })
