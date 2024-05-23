@@ -27,7 +27,7 @@ const validate = (state: any): FormError[] => {
 }
 
 async function onSubmit(e: FormSubmitEvent<any>) {
-  if (!userProfile?.user) {
+  if (userProfile === null) {
     console.log('Creating');
 
     const {res} = await $fetch('/api/profile', {
@@ -40,6 +40,7 @@ async function onSubmit(e: FormSubmitEvent<any>) {
 
     console.log('Updating');
 
+    console.log(state);
     const {res} = await $fetch('/api/profile', {
       method: 'put',
       body: state
@@ -70,10 +71,13 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       <UCheckbox v-model="state.published" label="Published"/>
     </UFormGroup>
 
-    <!--    <UFormGroup label="location" name="location">-->
-    <!--      <UInput v-model="state.location[0]"/>-->
-    <!--      <UInput v-model="state.location[1]"/>-->
-    <!--    </UFormGroup>-->
+    <UFormGroup label="latitude">
+      <UInput v-model="state.location[0]"/>
+    </UFormGroup>
+
+    <UFormGroup label="Longitude">
+      <UInput v-model="state.location[1]"/>
+    </UFormGroup>
 
     <!--    <ImageUploader/>-->
 

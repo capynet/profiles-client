@@ -1,4 +1,5 @@
 import type Product from "~/Models/Product";
+
 export default function useProductsDB() {
     type Model = Product
     const TABLE_NAME = 'products'
@@ -6,9 +7,7 @@ export default function useProductsDB() {
 
     const get = async (id: string) => {
         const query = await supabase
-            .from(TABLE_NAME)
-            .select(`*`)
-            .eq('user', id)
+            .rpc('get_product', {user_input: id})
             .single<Model>()
 
         return query.data

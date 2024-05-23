@@ -15,3 +15,31 @@ url: https://duqrknzvzheruzonllie.supabase.co
 
 callback url para supabase https://duqrknzvzheruzonllie.supabase.co/auth/v1/callback
 /home/capy/www/profiles/client/misc/credentials.json esta guardado por las dudas. no es que lo use.
+
+
+SQL functions
+Enabled ones can be found here: https://supabase.com/dashboard/project/duqrknzvzheruzonllie/database/functions?schema=public
+
+```sql
+create or replace function get_product(user_input products.user%TYPE) returns table (
+  id products.id%TYPE,
+  created_at products.created_at%TYPE, 
+  name products.name%TYPE, 
+  description products.description%TYPE, 
+  published products.published%TYPE, 
+  verified products.verified%TYPE, 
+  updated_at products.updated_at%TYPE,
+  location text[]
+  ) as $$
+  select 
+  id, 
+  created_at,
+  name, 
+  description,
+  published,
+  verified,
+  updated_at,
+  array[ST_Y(location::geometry), ST_X(location::geometry)] as location
+	from products where products.user = user_input;
+$$ language sql;
+```
