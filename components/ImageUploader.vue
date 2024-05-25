@@ -4,6 +4,7 @@ import 'vue-advanced-cropper/dist/style.css';
 
 const file = shallowRef()
 const url = useObjectUrl(file)
+const model = defineModel()
 
 const {files, open, reset, onChange} = useFileDialog({
   accept: 'image/*'
@@ -54,6 +55,9 @@ const onCropChange = (result) => {
 
       zoom.value = (imgWidth - coordsWidth) / (imgWidth - minWidth);
     }
+
+    // @todo try to delay the value until user finishes dragging or zooming.
+    model.value = file.value
   }
 }
 //https://codesandbox.io/s/vue-advanced-cropper-twitter-suoyc?file=/src/App.vue
@@ -61,6 +65,7 @@ const onCropChange = (result) => {
 </script>
 
 <template>
+
   <UFormGroup label="location" name="location">
     <UButton @click="open" label="Select main picture"/>
 

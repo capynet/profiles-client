@@ -6,7 +6,17 @@ export default defineEventHandler(async (event) => {
     const user = await serverSupabaseUser(event)
     const client = await serverSupabaseClient(event)
     const {genPoint} = useGeo()
+    let storedImgData = null
 
+    // 1 store image
+    if (body.image !== undefined) {
+        const {data, error} = await client.storage.from('test').upload(`${user.id}.jpg`, body.image, {
+            upsert: true
+        })
+        storedImgData = data
+    }
+
+    // Update product.
     const res = await client.from('products')
         .update({
             user: user.id,
@@ -19,6 +29,7 @@ export default defineEventHandler(async (event) => {
             phone: body.phone,
             phone_whatsapp: body.phone_whatsapp,
             phone_telegram: body.phone_telegram,
+            image: storedImgData
         })
         .eq('user', user.id)
         .select().single()

@@ -20,6 +20,7 @@ const state = reactive({
   phone: userProfile?.phone || undefined,
   phone_whatsapp: userProfile?.phone_whatsapp || undefined,
   phone_telegram: userProfile?.phone_telegram || undefined,
+  image: undefined,
 })
 
 const validate = (state: any): FormError[] => {
@@ -38,18 +39,14 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       body: state
     })
 
-    console.log(res);
   } else {
-
     console.log('Updating');
 
-    console.log(state);
     const {res} = await $fetch('/api/profile', {
       method: 'put',
       body: state
     })
 
-    console.log(res);
   }
 
 }
@@ -95,7 +92,7 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       <UCheckbox v-model="state.phone_telegram" label="This phone have Telegram"/>
     </UFormGroup>
 
-        <ImageUploader/>
+    <ImageUploader v-model="state.image"/>
 
 
     <UButton type="submit">Save</UButton>
