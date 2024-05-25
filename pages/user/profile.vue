@@ -17,6 +17,9 @@ const state = reactive({
   verified: userProfile?.verified || false,
   updated_at: userProfile?.updated_at || undefined,
   location: userProfile?.location || ['', ''],
+  phone: userProfile?.phone || undefined,
+  phone_whatsapp: userProfile?.phone_whatsapp || undefined,
+  phone_telegram: userProfile?.phone_telegram || undefined,
 })
 
 const validate = (state: any): FormError[] => {
@@ -77,6 +80,19 @@ async function onSubmit(e: FormSubmitEvent<any>) {
 
     <UFormGroup label="Longitude">
       <UInput v-model="state.location[1]"/>
+    </UFormGroup>
+
+
+    <UFormGroup name="phone">
+      <UInput v-model="state.phone"/>
+    </UFormGroup>
+
+    <UFormGroup name="enable_whatsapp">
+      <UCheckbox v-model="state.phone_whatsapp" label="This phone have WhatsApp"/>
+    </UFormGroup>
+
+    <UFormGroup name="enable_telegram">
+      <UCheckbox v-model="state.phone_telegram" label="This phone have Telegram"/>
     </UFormGroup>
 
     <!--    <ImageUploader/>-->

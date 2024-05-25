@@ -9,11 +9,16 @@ export default defineEventHandler(async (event) => {
 
     const res = await client.from('products')
         .update({
+            user: user.id,
             name: body.name,
             description: body.description,
             published: body.published,
-            location: genPoint(body.location),
+            verified: body.verified,
             updated_at: new Date().toISOString().toLocaleString(),
+            location: genPoint(body.location),
+            phone: body.phone,
+            phone_whatsapp: body.phone_whatsapp,
+            phone_telegram: body.phone_telegram,
         })
         .eq('user', user.id)
         .select().single()

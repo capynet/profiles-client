@@ -8,12 +8,16 @@ export default defineEventHandler(async (event) => {
     const {genPoint} = useGeo()
 
     const res = await client.from('products').upsert({
+        user: user.id,
         name: body.name,
         description: body.description,
         published: body.published,
-        location: genPoint(body.location),
+        verified: body.verified,
         updated_at: new Date().toISOString().toLocaleString(),
-        user: user.id
+        location: genPoint(body.location),
+        phone: body.phone,
+        phone_whatsapp: body.phone_whatsapp,
+        phone_telegram: body.phone_telegram,
     }).select().single()
 
     return {res}

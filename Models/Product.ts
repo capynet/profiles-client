@@ -10,4 +10,7 @@ export default interface Product {
     verified: boolean
     updated_at: Date
     location?: [number, number]
+    phone: string
+    phone_whatsapp: boolean,
+    phone_telegram: boolean,
 }
