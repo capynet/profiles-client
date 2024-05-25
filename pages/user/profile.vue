@@ -95,7 +95,7 @@ async function onSubmit(e: FormSubmitEvent<any>) {
       <UCheckbox v-model="state.phone_telegram" label="This phone have Telegram"/>
     </UFormGroup>
 
-    <!--    <ImageUploader/>-->
+        <ImageUploader/>
 
 
     <UButton type="submit">Save</UButton>

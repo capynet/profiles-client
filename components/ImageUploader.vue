@@ -33,21 +33,26 @@ const stencilSize = ({boundaries}) => {
 
 const onCropChange = (result) => {
   const cropper = cropperEl.value;
+
   if (cropper) {
     const {coordinates, imageSize} = cropper;
-    if (
-      imageSize.width / imageSize.height >
-      coordinates.width / coordinates.height
-    ) {
+    const a = imageSize.width / imageSize.height;
+    const b = coordinates.width / coordinates.height;
+
+    if (a > b) {
       // Determine the position of slider bullet
       // It's 0 if the stencil has the maximum size and it's 1 if the has the minimum size
-      zoom.value =
-        (cropper.imageSize.height - cropper.coordinates.height) /
-        (cropper.imageSize.height - cropper.sizeRestrictions.minHeight);
+      const imhHeight = cropper.imageSize.height;
+      const coordsHeight = cropper.coordinates.height;
+      const minHeight = cropper.sizeRestrictions.minHeight;
+      zoom.value = (imhHeight - coordsHeight) / (imhHeight - minHeight);
+
     } else {
-      zoom.value =
-        (cropper.imageSize.width - cropper.coordinates.width) /
-        (cropper.imageSize.width - cropper.sizeRestrictions.minWidth);
+      const imgWidth = cropper.imageSize.width;
+      const coordsWidth = cropper.coordinates.width;
+      const minWidth = cropper.sizeRestrictions.minWidth;
+
+      zoom.value = (imgWidth - coordsWidth) / (imgWidth - minWidth);
     }
   }
 }
@@ -90,7 +95,6 @@ const onCropChange = (result) => {
 .twitter-cropper {
   height: 576px;
   width: 324px;
-
 
 
   &__stencil {
