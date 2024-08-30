@@ -29,11 +29,17 @@ const signInWithGoogle = async () => {
 </script>
 
 <template>
-  <div>
-    <p>Just put your email and access from link sent to your account.</p>
-    <UInput v-model="email" size="xl" type="email" class="mb-4"/>
-    <UButton color="primary" variant="solid" @click="signInWithOtp" size="xl">Button</UButton>
+  <div class="flex flex-col w-96 items-center m-auto">
+    <div class="flex flex-col items-center">
+      <p class="mb-3">Just put your email and access from link sent to your account.</p>
+      <UInput v-model="email" size="xl" type="email" class="mb-4 w-96"/>
+      <UButton icon="i-heroicons-at-symbol" color="primary" variant="solid" @click="signInWithOtp" size="xl">Send magic link to my email</UButton>
+    </div>
 
-    <UButton color="primary" variant="solid" @click="signInWithGoogle" size="xl">Google!!!!</UButton>
+    <div class="my-6">--------------------- Or ---------------------</div>
+
+    <div>
+      <UButton icon="i-heroicons-user-circle" color="primary" variant="solid" @click="signInWithGoogle" size="xl">Sign in with Google</UButton>
+    </div>
   </div>
 </template>
