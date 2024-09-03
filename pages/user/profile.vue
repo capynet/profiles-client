@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import type {FormError, FormSubmitEvent} from '#ui/types'
+import useProductsDB from "~/composables/useProductsDB";
+import useFileTools from "~/composables/useFileTools";
 
 const supabaseUser = useSupabaseUser()
-import useProductsDB from "~/composables/useProductsDB";
-
 const {get} = useProductsDB()
+const {toBase64} = useFileTools()
+
 const userProfile = await get(supabaseUser.value.id)
 
 const state = reactive({
@@ -31,6 +33,12 @@ const validate = (state: any): FormError[] => {
 }
 
 async function onSubmit(e: FormSubmitEvent<any>) {
+
+  if (state.image !== undefined) {
+    state.image = await toBase64(state.image)
+  }
+
+
   if (userProfile === null) {
     console.log('Creating');
 

@@ -1,5 +1,8 @@
 import {serverSupabaseUser, serverSupabaseClient} from '#supabase/server'
 import useGeo from "~/composables/useGeo";
+import useFileTools from "~/composables/useFileTools";
+
+const {dataUrlToFile} = useFileTools()
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
@@ -10,8 +13,10 @@ export default defineEventHandler(async (event) => {
 
     // 1 store image
     if (body.image !== undefined) {
-        const {data, error} = await client.storage.from('test').upload(`${user.id}.jpg`, body.image, {
-            upsert: true
+        const imgAsFile = await dataUrlToFile(body.image, "probamos")
+
+        const {data, error} = await client.storage.from('test').upload(`${user.id}.jpg`, imgAsFile, {
+            upsert: true,
         })
         storedImgData = data
     }
