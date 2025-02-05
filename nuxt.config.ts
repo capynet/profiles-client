@@ -12,6 +12,18 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@nuxt/image',
     ],
+    image: {
+        // Configura tu proveedor aquí o usa el default
+        provider: 'ipx',
+        screens: {
+            xs: 320,
+            sm: 640,
+            md: 768,
+            lg: 1024,
+            xl: 1280,
+            xxl: 1536,
+        },
+    },
     runtimeConfig: {
         public: {
             siteUrl: process.env.SITE_URL
