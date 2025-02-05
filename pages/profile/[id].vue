@@ -2,15 +2,15 @@
 const route = useRoute()
 const query = `*[_id == '${route.params.id}'][0]`
 const sanity = useSanity()
-const { data } = await useAsyncData<Record<any, any>>('profile', () => sanity.fetch(query))
+const {data} = await useAsyncData<Record<any, any>>('profile', () => sanity.fetch(query))
 const header = ref(null)
 const activeImage = ref(null)
 
 // Placeholders con relación 9:16 (648x1152 = 9:16 ratio)
 const allImages = computed(() => [
-  { url: 'https://picsum.photos/648/1152' }, // Principal
-  ...Array.from({ length: 5 }, (_, i) => ({
-    url: `https://picsum.photos/${Math.round(100 * 9/16)}/100?random=${i}`
+  {url: 'https://picsum.photos/648/1152'}, // Principal
+  ...Array.from({length: 5}, (_, i) => ({
+    url: `https://picsum.photos/${Math.round(100 * 9 / 16)}/100?random=${i}`
   })) // Miniaturas
 ])
 
@@ -94,8 +94,6 @@ onMounted(() => {
           </div>
         </button>
       </div>
-
-
 
 
     </div>
