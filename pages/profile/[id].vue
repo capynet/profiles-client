@@ -1,10 +1,14 @@
 <script setup lang='ts'>
 const route = useRoute()
-const query = `*[_id == '${route.params.id}'][0]`
-const sanity = useSanity()
-const {data} = await useAsyncData<Record<any, any>>('profile', () => sanity.fetch(query))
 const header = ref(null)
 const activeImage = ref(null)
+
+// Datos estáticos
+const data = {
+  name: 'Juan Pérez',
+  bio: 'Soy un profesional con más de 10 años de experiencia en mi campo. Me apasiona ayudar a las personas y ofrecer soluciones creativas a sus problemas.',
+  _updatedAt: '15 de octubre de 2023',
+}
 
 // Placeholders con relación 9:16 (648x1152 = 9:16 ratio)
 const allImages = computed(() => [
@@ -94,15 +98,13 @@ onMounted(() => {
           </div>
         </button>
       </div>
-
-
     </div>
 
     <!-- Columna derecha - Información -->
     <div class="lg:w-1/3 space-y-6 mt-6 lg:mt-0">
       <!-- Encabezado -->
       <div class="bg-white p-6 rounded-xl shadow-lg sticky top-4">
-        <h1 class="text-3xl font-bold mb-4 text-slate-800">{{ data?.name }}</h1>
+        <h1 class="text-3xl font-bold mb-4 text-slate-800">{{ data.name }}</h1> <!-- Usando data estática -->
 
         <!-- Bloque de contacto -->
         <div class="space-y-3 mb-6">
@@ -135,7 +137,7 @@ onMounted(() => {
         <div class="mb-6">
           <h2 class="text-xl font-bold mb-3 text-slate-800">Sobre mí</h2>
           <p class="text-slate-600 leading-relaxed">
-            {{ data?.bio || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem dolores nemo temporibus dignissimos.' }}
+            {{ data.bio }} <!-- Usando data estática -->
           </p>
         </div>
 
@@ -169,7 +171,7 @@ onMounted(() => {
             <UIcon name="i-heroicons-calendar" class="w-5 h-5 mr-3 text-slate-400"/>
             <div>
               <p class="font-semibold">Última actualización</p>
-              <p class="text-sm text-slate-400">{{ data?._updatedAt }}</p>
+              <p class="text-sm text-slate-400">{{ data._updatedAt }}</p> <!-- Usando data estática -->
             </div>
           </div>
         </div>
