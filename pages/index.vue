@@ -85,11 +85,13 @@ const sortOptionsSelected = ref('newest')
           </template>
         </URadioGroup>
 
-
       </div>
 
-
-      <ProductsGrid v-if='resViewMode === "list"' :profiles='data' />
+      <ProductsGrid
+        v-if='resViewMode === "list"'
+        :profiles='data'
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
+      />
       <ProductsMap v-if='resViewMode === "map"' :profiles='data' />
     </div>
   </div>
@@ -106,5 +108,18 @@ const sortOptionsSelected = ref('newest')
 
 .sort-options > fieldset > *:last-child{
   @apply mr-0;
+}
+
+/* Estilos para las tarjetas del grid */
+.products-grid > div {
+  @apply w-full h-full transition-transform duration-200 hover:scale-[1.02];
+}
+
+.products-grid img {
+  @apply w-full h-48 object-cover rounded-t-lg;
+}
+
+.products-grid .card-content {
+  @apply p-4 bg-white rounded-b-lg;
 }
 </style>
