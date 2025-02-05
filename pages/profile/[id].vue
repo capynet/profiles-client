@@ -95,32 +95,9 @@ onMounted(() => {
         </button>
       </div>
 
-      <!-- Sección sobre mí -->
-      <div class="bg-slate-50 p-6 rounded-xl shadow-lg mb-6">
-        <h2 class="text-xl font-bold mb-3 text-slate-800">Sobre mí</h2>
-        <p class="text-slate-600 leading-relaxed">
-          {{ data?.bio || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem dolores nemo temporibus dignissimos.' }}
-        </p>
-      </div>
 
-      <!-- Mapa -->
-      <div class="bg-white p-6 rounded-xl shadow-lg">
-        <h2 class="text-xl font-bold mb-3 text-slate-800">¿Dónde estoy?</h2>
-        <a href="#" class="inline-flex items-center text-blue-600 hover:underline mb-3">
-          <UIcon name="i-heroicons-map-pin" class="w-5 h-5 mr-2"/>
-          Ver en Google Maps
-        </a>
-        <div class="h-48 bg-slate-100 rounded-lg overflow-hidden">
-          <suspense>
-            <ProfileMap :id='route.params.id as String'/>
-            <template #fallback>
-              <div class="flex items-center justify-center h-full text-slate-400">
-                Cargando mapa...
-              </div>
-            </template>
-          </suspense>
-        </div>
-      </div>
+
+
     </div>
 
     <!-- Columna derecha - Información -->
@@ -156,6 +133,14 @@ onMounted(() => {
           </div>
         </div>
 
+        <!-- Sección sobre mí -->
+        <div class="mb-6">
+          <h2 class="text-xl font-bold mb-3 text-slate-800">Sobre mí</h2>
+          <p class="text-slate-600 leading-relaxed">
+            {{ data?.bio || 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum voluptatem dolores nemo temporibus dignissimos.' }}
+          </p>
+        </div>
+
         <!-- Destacado -->
         <div class="bg-amber-100 p-4 rounded-lg border border-amber-200 mb-6">
           <div class="flex items-center">
@@ -165,7 +150,7 @@ onMounted(() => {
         </div>
 
         <!-- Estadísticas -->
-        <div class="space-y-4">
+        <div class="space-y-4 mb-6">
           <div class="flex items-center">
             <UIcon name="i-heroicons-eye" class="w-5 h-5 mr-3 text-slate-400"/>
             <div>
@@ -188,6 +173,25 @@ onMounted(() => {
               <p class="font-semibold">Última actualización</p>
               <p class="text-sm text-slate-400">{{ data?._updatedAt }}</p>
             </div>
+          </div>
+        </div>
+
+        <!-- Mapa -->
+        <div class="">
+          <h2 class="text-xl font-bold mb-3 text-slate-800">¿Dónde estoy?</h2>
+          <a href="#" class="inline-flex items-center text-blue-600 hover:underline mb-3">
+            <UIcon name="i-heroicons-map-pin" class="w-5 h-5 mr-2"/>
+            Ver en Google Maps
+          </a>
+          <div class="h-48 bg-slate-100 rounded-lg overflow-hidden">
+            <suspense>
+              <ProfileMap :id='route.params.id as String'/>
+              <template #fallback>
+                <div class="flex items-center justify-center h-full text-slate-400">
+                  Cargando mapa...
+                </div>
+              </template>
+            </suspense>
           </div>
         </div>
       </div>
