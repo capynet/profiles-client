@@ -4,7 +4,11 @@ interface ProfileData {
   name: string
   image: string
   description: string
-  location: string
+  location: {  // Mantenemos el tipo completo aunque no lo mostremos en la UI
+    name: string
+    lat: number
+    lng: number
+  }
   updatedAt: string
 }
 
@@ -31,10 +35,7 @@ const props = defineProps<{
       </div>
 
       <div class='p-4'>
-        <div class="flex items-center justify-between mb-2">
-          <h5 class='text-xl font-bold tracking-tight text-gray-900 dark:text-white'>{{ data.name }}</h5>
-          <span class="text-sm text-gray-500">{{ data.location }}</span>
-        </div>
+        <h5 class='text-xl font-bold tracking-tight text-gray-900 dark:text-white mb-2'>{{ data.name }}</h5>
 
         <p class='text-sm text-gray-600 dark:text-gray-400 line-clamp-3'>
           {{ data.description }}

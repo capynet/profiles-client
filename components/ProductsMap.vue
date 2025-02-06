@@ -1,20 +1,43 @@
 <script setup lang='ts'>
 import {GoogleMap, Marker, InfoWindow, CustomControl} from 'vue3-google-map'
 
+interface Profile {
+  id: string
+  name: string
+  image: string
+  description: string
+  location: {
+    name: string
+    lat: number
+    lng: number
+  }
+  updatedAt: string
+}
+
 const props = defineProps<{
-  profiles: Record<any, any>
+  profiles: Profile[]
 }>()
 
-const center = {lat: 36.72032627623469, lng: -4.44038552678008}
+// Calculamos el centro basado en la primera ubicación o usamos un valor por defecto
+const center = computed(() => {
+  if (props.profiles && props.profiles.length > 0) {
+    return {
+      lat: props.profiles[0].location.lat,
+      lng: props.profiles[0].location.lng
+    }
+  }
+  return {lat: 40.4168, lng: -3.7038} // Centro por defecto en Madrid
+})
+
 const drawing = ref(false)
 const map = ref(null)
 let drawingManager = null
 
-const buildMarker = (profile: Record<any, any>) => {
+const buildMarker = (profile: Profile) => {
   return {
     position: {
-      lat: Number(profile.location.lat),
-      lng: Number(profile.location.lng)
+      lat: profile.location.lat,
+      lng: profile.location.lng
     },
     title: profile.name
   }
@@ -30,11 +53,11 @@ const enableDrawZone = () => {
 
   drawingManager.setMap(map.value?.map)
 }
+
 const disableDrawZone = () => {
   drawing.value = false
   drawingManager.setMap(null)
 }
-
 </script>
 
 <template>
@@ -43,13 +66,16 @@ const disableDrawZone = () => {
     api-key='AIzaSyCs5euULwZygbgzVWHq1Dm70t5OgGRgeho'
     style='width: 100%; height: 700px'
     :center='center'
-    :zoom='13'
+    :zoom='6'
     gestureHandling='greedy'
     :libraries="['drawing']"
-    :styles='[{"featureType": "poi", "stylers": [{ "visibility": "off" }]},
-  ]'
+    :styles='[{"featureType": "poi", "stylers": [{ "visibility": "off" }]}]'
   >
-    <Marker v-for='(profile, i) in profiles' :key='i' :options='buildMarker(profile)'>
+    <Marker
+      v-for='profile in profiles'
+      :key='profile.id'
+      :options='buildMarker(profile)'
+    >
       <InfoWindow>
         <ProductCardMap :data='profile' />
       </InfoWindow>
@@ -81,8 +107,6 @@ const disableDrawZone = () => {
           @click='disableDrawZone'
         />
       </div>
-
     </CustomControl>
-
   </GoogleMap>
 </template>

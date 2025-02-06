@@ -3,58 +3,86 @@
 const data = [
   {
     id: '1',
-    name: 'Sudo',
-    image: 'https://picsum.photos/400/300',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Madrid',
+    name: 'Lola - Peluquería Canina',
+    image: 'https://picsum.photos/seed/1/800/1000',
+    description: 'Peluquería canina profesional con más de 15 años de experiencia. Especialistas en razas pequeñas y medianas. Servicio de recogida a domicilio.',
+    location: {
+      name: 'Centro Histórico, Málaga',
+      lat: 36.7213,
+      lng: -4.4217
+    },
     updatedAt: '2024-02-06'
   },
   {
     id: '2',
-    name: 'El groso',
-    image: 'https://picsum.photos/400/301',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Barcelona',
+    name: 'Hotel Mascotas Happy Tails',
+    image: 'https://picsum.photos/seed/2/800/1000',
+    description: 'Residencia de lujo para mascotas con instalaciones climatizadas, cámaras 24/7 y personal veterinario permanente. Jardín amplio y actividades diarias.',
+    location: {
+      name: 'Teatinos, Málaga',
+      lat: 36.7320,
+      lng: -4.4753
+    },
     updatedAt: '2024-02-05'
   },
   {
     id: '3',
-    name: 'Kira',
-    image: 'https://picsum.photos/400/302',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Valencia',
+    name: 'Veterinaria El Palo',
+    image: 'https://picsum.photos/seed/3/800/1000',
+    description: 'Clínica veterinaria con servicio de urgencias 24h. Equipamiento de última generación y especialistas en cirugía y traumatología animal.',
+    location: {
+      name: 'El Palo, Málaga',
+      lat: 36.7214,
+      lng: -4.3601
+    },
     updatedAt: '2024-02-04'
   },
   {
     id: '4',
-    name: 'Kira',
-    image: 'https://picsum.photos/400/302',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Valencia',
+    name: 'Paseador Profesional Carlos',
+    image: 'https://picsum.photos/seed/4/800/1000',
+    description: 'Servicio personalizado de paseos para perros. Grupos reducidos, rutas adaptadas y fotos diarias de la actividad. Experiencia con todas las razas.',
+    location: {
+      name: 'Huelin, Málaga',
+      lat: 36.7141,
+      lng: -4.4428
+    },
     updatedAt: '2024-02-04'
   },
   {
     id: '5',
-    name: 'Kira',
-    image: 'https://picsum.photos/400/302',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Valencia',
+    name: 'Tienda Natural PetFood',
+    image: 'https://picsum.photos/seed/5/800/1000',
+    description: 'Alimentación natural y orgánica para mascotas. Asesoramiento nutricional personalizado y dietas BARF. Productos frescos y locales.',
+    location: {
+      name: 'Carretera de Cádiz, Málaga',
+      lat: 36.7062,
+      lng: -4.4405
+    },
     updatedAt: '2024-02-04'
   },
   {
     id: '6',
-    name: 'Kira',
-    image: 'https://picsum.photos/400/302',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Valencia',
+    name: 'Adiestramiento Canino K9',
+    image: 'https://picsum.photos/seed/6/800/1000',
+    description: 'Centro de adiestramiento especializado en modificación de conducta. Clases individuales y grupales. Preparación para competiciones deportivas caninas.',
+    location: {
+      name: 'Ciudad Jardín, Málaga',
+      lat: 36.7368,
+      lng: -4.4063
+    },
     updatedAt: '2024-02-04'
   },
   {
     id: '7',
-    name: 'Kira',
-    image: 'https://picsum.photos/400/302',
-    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
-    location: 'Valencia',
+    name: 'Spa & Grooming VIP Pets',
+    image: 'https://picsum.photos/seed/7/800/1000',
+    description: 'Centro de belleza y bienestar para mascotas. Tratamientos spa, aromaterapia y peluquería de lujo. Productos premium y atención personalizada.',
+    location: {
+      name: 'Puerto de la Torre, Málaga',
+      lat: 36.7447,
+      lng: -4.4605
+    },
     updatedAt: '2024-02-04'
   },
 ]
