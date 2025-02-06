@@ -84,6 +84,42 @@ const data = [
     },
     updatedAt: '2024-02-04'
   },
+  {
+    id: '8',
+    name: 'Centro Veterinario Costa del Sol',
+    image: 'https://picsum.photos/seed/8/800/1000',
+    description: 'Centro veterinario especializado en animales exóticos. Servicio de hospitalización, laboratorio propio y diagnóstico por imagen avanzado. Equipo internacional.',
+    location: {
+      name: 'Torremolinos, Málaga',
+      lat: 36.6240,
+      lng: -4.4994
+    },
+    updatedAt: '2024-02-06'
+  },
+  {
+    id: '9',
+    name: 'Mascoting - Cuidado a Domicilio',
+    image: 'https://picsum.photos/seed/9/800/1000',
+    description: 'Servicio de cuidadores profesionales a domicilio. Cuidamos de tu mascota en tu propia casa. Visitas diarias, administración de medicamentos y mucho mimo.',
+    location: {
+      name: 'Cerrado de Calderón, Málaga',
+      lat: 36.7283,
+      lng: -4.3921
+    },
+    updatedAt: '2024-02-05'
+  },
+  {
+    id: '10',
+    name: 'Fisioterapia Animal FisioVet',
+    image: 'https://picsum.photos/seed/10/800/1000',
+    description: 'Centro de rehabilitación y fisioterapia animal. Tratamientos de hidroterapia, electroestimulación y terapia manual. Especialistas en recuperación postoperatoria.',
+    location: {
+      name: 'La Paz, Málaga',
+      lat: 36.7266,
+      lng: -4.4394
+    },
+    updatedAt: '2024-02-06'
+  }
 ]
 
 const isOpen = ref(false)

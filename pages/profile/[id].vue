@@ -17,7 +17,7 @@ const data = {
 // Placeholders con relación 9:16 (648x1152 = 9:16 ratio)
 const allImages = computed(() => [
   {url: 'https://picsum.photos/648/1152'}, // Principal
-  ...Array.from({length: 5}, (_, i) => ({
+  ...Array.from({length: 10}, (_, i) => ({
     url: `https://picsum.photos/${Math.round(100 * 9 / 16)}/100?random=${i}`
   })) // Miniaturas
 ])
@@ -76,15 +76,15 @@ onMounted(() => {
       </div>
 
       <!-- Miniaturas -->
-      <div class="flex gap-2 mb-8 overflow-x-auto pb-2 custom-scroll">
+      <div class="grid grid-cols-5 sm:grid-cols-6 gap-2 mb-8">
         <button
           v-for='(pic, i) in allImages'
           :key="i"
           @click="setActiveImage(pic)"
-          class="shrink-0 relative transition-all duration-200 focus:outline-none"
-          :class="{'ring-2 ring-blue-500': isActive(pic)}"
+          class="relative transition-all duration-200 focus:outline-none rounded-lg overflow-hidden"
+          :class="{'ring-2 ring-orange-500 ring-offset-2': isActive(pic)}"
         >
-          <div class="relative aspect-[9/16] w-[75px] sm:w-[100px]">
+          <div class="relative aspect-[9/16] w-full"> <!-- Cambiado aquí -->
             <nuxt-img
               :src="pic.url"
               width="100"
@@ -222,20 +222,4 @@ onMounted(() => {
   font-size: 20px;
 }
 
-.custom-scroll::-webkit-scrollbar {
-  height: 4px;
-}
-
-.custom-scroll::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 4px;
-}
-
-.custom-scroll::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
 </style>
