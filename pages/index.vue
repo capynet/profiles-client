@@ -1,7 +1,64 @@
-<script setup lang='js'>
-const query = `*[_type == 'pet']`
-const sanity = useSanity()
-const {data} = await useAsyncData('profiles', () => sanity.fetch(query))
+<script setup lang='ts'>
+// Datos estáticos en lugar de Sanity
+const data = [
+  {
+    id: '1',
+    name: 'Sudo',
+    image: 'https://picsum.photos/400/300',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Madrid',
+    updatedAt: '2024-02-06'
+  },
+  {
+    id: '2',
+    name: 'El groso',
+    image: 'https://picsum.photos/400/301',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Barcelona',
+    updatedAt: '2024-02-05'
+  },
+  {
+    id: '3',
+    name: 'Kira',
+    image: 'https://picsum.photos/400/302',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Valencia',
+    updatedAt: '2024-02-04'
+  },
+  {
+    id: '4',
+    name: 'Kira',
+    image: 'https://picsum.photos/400/302',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Valencia',
+    updatedAt: '2024-02-04'
+  },
+  {
+    id: '5',
+    name: 'Kira',
+    image: 'https://picsum.photos/400/302',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Valencia',
+    updatedAt: '2024-02-04'
+  },
+  {
+    id: '6',
+    name: 'Kira',
+    image: 'https://picsum.photos/400/302',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Valencia',
+    updatedAt: '2024-02-04'
+  },
+  {
+    id: '7',
+    name: 'Kira',
+    image: 'https://picsum.photos/400/302',
+    description: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.',
+    location: 'Valencia',
+    updatedAt: '2024-02-04'
+  },
+]
+
 const isOpen = ref(false)
 const resViewMode = ref('list')
 const sortOptions = [
