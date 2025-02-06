@@ -3,7 +3,6 @@ export default defineNuxtConfig({
     compatibilityDate: '2024-08-29',
     devtools: {enabled: false},
     modules: [
-        '@nuxtjs/sanity',
         '@nuxt/ui',
         '@nuxtjs/device',
         '@nuxtjs/color-mode',
@@ -28,10 +27,6 @@ export default defineNuxtConfig({
         public: {
             siteUrl: process.env.SITE_URL
         }
-    },
-    sanity: {
-        projectId: 'f68tamz8',
-        dataset: "production"
     },
     i18n: {
         vueI18n: './i18n.config.ts'

@@ -66,7 +66,7 @@ const disableDrawZone = () => {
     api-key='AIzaSyCs5euULwZygbgzVWHq1Dm70t5OgGRgeho'
     style='width: 100%; height: 700px'
     :center='center'
-    :zoom='6'
+    :zoom='13'
     gestureHandling='greedy'
     :libraries="['drawing']"
     :styles='[{"featureType": "poi", "stylers": [{ "visibility": "off" }]}]'
