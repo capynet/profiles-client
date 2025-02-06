@@ -147,7 +147,7 @@ const sortOptionsSelected = ref('newest')
       <ProductsGrid
         v-if='resViewMode === "list"'
         :profiles='data'
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:p-4"
       />
       <ProductsMap v-if='resViewMode === "map"' :profiles='data' />
     </div>
