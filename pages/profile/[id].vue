@@ -14,20 +14,26 @@ const data = {
   }
 }
 
-// Placeholders con relación 9:16 (648x1152 = 9:16 ratio)
 const allImages = computed(() => [
-  {url: 'https://picsum.photos/648/1152'}, // Principal
+  {
+    thumbnail: 'https://picsum.photos/56/100', // Versión pequeña para miniatura
+    fullsize: 'https://picsum.photos/648/1152', // Versión grande para imagen principal
+  },
   ...Array.from({length: 10}, (_, i) => ({
-    url: `https://picsum.photos/${Math.round(100 * 9 / 16)}/100?random=${i}`
-  })) // Miniaturas
+    thumbnail: `https://picsum.photos/${Math.round(56 * 9 / 16)}/100?random=${i}`,
+    fullsize: `https://picsum.photos/648/1152?random=${i}`
+  }))
 ])
 
 const setActiveImage = (image) => {
-  activeImage.value = image
+  activeImage.value = {
+    ...image,
+    url: image.fullsize // Usamos la versión en alta calidad
+  }
 }
 
 const isActive = (image) => {
-  return activeImage.value?.url === image?.url ||
+  return activeImage.value?.fullsize === image?.fullsize ||
     (!activeImage.value && image === allImages.value[0])
 }
 
@@ -64,7 +70,7 @@ onMounted(() => {
       <!-- Imagen principal -->
       <div class="relative aspect-[9/16] mb-4 rounded-xl shadow-lg overflow-hidden">
         <nuxt-img
-          :src="activeImage?.url || allImages[0]?.url"
+          :src="activeImage?.url || allImages[0]?.fullsize"
           width="648"
           height="1152"
           fit="cover"
@@ -84,11 +90,11 @@ onMounted(() => {
           class="relative transition-all duration-200 focus:outline-none rounded-lg overflow-hidden"
           :class="{'ring-2 ring-orange-500 ring-offset-2': isActive(pic)}"
         >
-          <div class="relative aspect-[9/16] w-full"> <!-- Cambiado aquí -->
+          <div class="relative aspect-[9/16] w-full">
             <nuxt-img
-              :src="pic.url"
-              width="100"
-              height="175"
+              :src="pic.thumbnail"
+              width="56"
+              height="100"
               fit="cover"
               position="center"
               class="w-full h-full object-cover rounded-lg hover:opacity-90 transition-opacity"
