@@ -1,5 +1,4 @@
 <script setup lang='ts'>
-// Datos estáticos en lugar de Sanity
 const data = [
   {
     id: '1',

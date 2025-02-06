@@ -60,7 +60,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col lg:flex-row lg:gap-8 lg:p-8 max-w-7xl mx-auto">
     <!-- Columna izquierda - Galería -->
-    <div class="lg:w-2/3">
+    <div class="lg:w-3/5">
       <!-- Imagen principal -->
       <div class="relative aspect-[9/16] mb-4 rounded-xl shadow-lg overflow-hidden">
         <nuxt-img
@@ -105,7 +105,7 @@ onMounted(() => {
     </div>
 
     <!-- Columna derecha - Información -->
-    <div class="lg:w-1/3 space-y-6 mt-6 lg:mt-0">
+    <div class="lg:w-2/5 space-y-6 mt-6 lg:mt-0">
       <!-- Encabezado -->
       <div class="bg-white p-6 rounded-xl shadow-lg sticky top-4">
         <h1 class="text-3xl font-bold mb-4 text-slate-800">{{ data.name }}</h1> <!-- Usando data estática -->
