@@ -1,27 +1,28 @@
 <script setup lang='ts'>
+interface ProfileData {
+  id: string
+  name: string
+  image: string
+}
+
 const props = defineProps<{
-  data: Record<any, any>
+  data: ProfileData
 }>()
 </script>
 
 <template>
   <div>
-    <NuxtLink :to='`/profile/${data._id}`'>
-      <SanityImage
-        :asset-id='data.main_picture.asset._ref'
-        auto='format'
-        :w='162'
-        :h='288'
-        fit='crop'
-        crop='center'
-        class='w-full'
+    <NuxtLink :to="`/profile/${data.id}`">
+      <img
+        :src="data.image"
+        :alt="data.name"
+        class="w-[162px] h-[288px] object-cover"
       />
 
-      <div class='pt-3 pb-1 text-center'>
-        <h5 class='text-gray-900'>{{ data.name }}</h5>
+      <div class="pt-3 pb-1 text-center">
+        <h5 class="text-gray-900">{{ data.name }}</h5>
       </div>
     </NuxtLink>
   </div>
-
 </template>
 

@@ -8,6 +8,10 @@ const data = {
   name: 'Juan Pérez',
   bio: 'Soy un profesional con más de 10 años de experiencia en mi campo. Me apasiona ayudar a las personas y ofrecer soluciones creativas a sus problemas.',
   _updatedAt: '15 de octubre de 2023',
+  location: {
+    lat: 36.7213,
+    lng: -4.4217
+  }
 }
 
 // Placeholders con relación 9:16 (648x1152 = 9:16 ratio)
@@ -183,9 +187,10 @@ onMounted(() => {
             <UIcon name="i-heroicons-map-pin" class="w-5 h-5 mr-2"/>
             Ver en Google Maps
           </a>
+
           <div class="h-48 bg-slate-100 rounded-lg overflow-hidden">
             <suspense>
-              <ProfileMap :id='route.params.id as String'/>
+              <ProfileMap :location="data.location"/>
               <template #fallback>
                 <div class="flex items-center justify-center h-full text-slate-400">
                   Cargando mapa...
@@ -193,6 +198,7 @@ onMounted(() => {
               </template>
             </suspense>
           </div>
+
         </div>
       </div>
     </div>
