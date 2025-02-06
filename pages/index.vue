@@ -34,49 +34,48 @@ const sortOptionsSelected = ref('newest')
   </USlideover>
 
   <div class='sm:flex'>
-
     <div class='left w-full sm:w-3/12 p-6' v-if='$device.isDesktop'>
       <h2 class='mb-4'>Filter</h2>
       <SearchFilters />
     </div>
 
     <div class='right w-full sm:w-9/12'>
+      <div class="flex flex-col sm:flex-row gap-4 mb-2">
+        <div class="flex gap-2">
+          <UButton
+            label='Filters'
+            icon='i-heroicons-funnel'
+            @click='isOpen = true'
+            v-if='$device.isMobile'
+            size='xl'
+            :trailing="false"
+          />
 
-      <div class='flex justify-start mb-2'>
-        <UButton
-          label='Filters'
-          icon='i-heroicons-funnel'
-          @click='isOpen = true'
-          v-if='$device.isMobile'
-          size='xl'
-          :trailing="false"
-        />
+          <UButton
+            icon='i-heroicons-list-bullet'
+            size='xl'
+            :color='resViewMode === "list" ? "primary" : "gray"'
+            variant='solid'
+            label='List'
+            :trailing='false'
+            @click='resViewMode = "list"'
+          />
 
-        <UButton
-          class='mr-2'
-          icon='i-heroicons-list-bullet'
-          size='xl'
-          :color='resViewMode === "list" ? "primary" : "gray"'
-          variant='solid'
-          label='List'
-          :trailing='false'
-          @click='resViewMode = "list"'
-        />
-
-        <UButton
-          icon='i-heroicons-map'
-          size='xl'
-          :color='resViewMode === "map" ? "primary" : "gray"'
-          variant='solid'
-          label='Map'
-          :trailing='false'
-          @click='resViewMode = "map"'
-        />
+          <UButton
+            icon='i-heroicons-map'
+            size='xl'
+            :color='resViewMode === "map" ? "primary" : "gray"'
+            variant='solid'
+            label='Map'
+            :trailing='false'
+            @click='resViewMode = "map"'
+          />
+        </div>
 
         <URadioGroup
           v-model='sortOptionsSelected'
           :options='sortOptions'
-          class='sort-options ml-auto'
+          class='sort-options sm:ml-auto'
           v-if='resViewMode === "list"'
         >
           <template #label='{ option }'>
@@ -86,7 +85,6 @@ const sortOptionsSelected = ref('newest')
             </p>
           </template>
         </URadioGroup>
-
       </div>
 
       <ProductsGrid
@@ -104,11 +102,11 @@ const sortOptionsSelected = ref('newest')
   @apply flex;
 }
 
-.sort-options > fieldset > *{
+.sort-options > fieldset > * {
   @apply mr-3;
 }
 
-.sort-options > fieldset > *:last-child{
+.sort-options > fieldset > *:last-child {
   @apply mr-0;
 }
 
