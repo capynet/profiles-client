@@ -45,9 +45,11 @@ const sortOptionsSelected = ref('newest')
       <div class='flex justify-start mb-2'>
         <UButton
           label='Filters'
+          icon='i-heroicons-funnel'
           @click='isOpen = true'
           v-if='$device.isMobile'
           size='xl'
+          :trailing="false"
         />
 
         <UButton
