@@ -4,7 +4,7 @@ interface ProfileData {
   name: string
   image: string
   description: string
-  location: {  // Mantenemos el tipo completo aunque no lo mostremos en la UI
+  location: {
     name: string
     lat: number
     lng: number
@@ -22,15 +22,11 @@ const props = defineProps<{
     <NuxtLink :to='`/profile/${data.id}`'>
       <!-- Contenedor de imagen con aspect ratio 9:16 -->
       <div class="relative aspect-[9/16]">
-        <nuxt-img
+        <img
           :src="data.image"
-          width="648"
-          height="1152"
-          fit="cover"
-          position="center"
+          :alt="data.name"
           class="w-full h-full object-cover"
-          format="webp"
-          quality="80"
+          loading="lazy"
         />
       </div>
 
@@ -42,7 +38,7 @@ const props = defineProps<{
         </p>
 
         <div class="flex items-center mt-3 text-xs text-gray-500">
-          <UIcon name="i-heroicons-calendar" class="w-4 h-4 mr-1"/>
+          <UIcon name="i-heroicons-calendar-20-solid" class="w-4 h-4 mr-1"/>
           {{ data.updatedAt }}
         </div>
       </div>

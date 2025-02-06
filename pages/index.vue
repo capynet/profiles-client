@@ -90,9 +90,9 @@ const data = [
 const isOpen = ref(false)
 const resViewMode = ref('list')
 const sortOptions = [
-  {value: 'newest', label: 'Newest', icon: 'i-heroicons-inbox-arrow-down'},
-  {value: 'near', label: 'Nearest', icon: 'i-heroicons-map-pin'},
-  {value: 'price', label: 'Price', icon: 'i-heroicons-card'}
+  {value: 'newest', label: 'Newest', icon: 'i-heroicons-inbox-stack-20-solid'},
+  {value: 'near', label: 'Nearest', icon: 'i-heroicons-map-pin-20-solid'},
+  {value: 'price', label: 'Price', icon: 'i-heroicons-banknotes-20-solid'}
 ]
 
 const sortOptionsSelected = ref('newest')
@@ -104,7 +104,7 @@ const sortOptionsSelected = ref('newest')
       <template #header>
         <UButton
           @click='isOpen = false'
-          icon='i-heroicons-x-mark'
+          icon='i-heroicons-x-mark-20-solid'
           size='xl'
           color='primary'
           square
@@ -129,7 +129,7 @@ const sortOptionsSelected = ref('newest')
         <div class="flex gap-2">
           <UButton
             label='Filters'
-            icon='i-heroicons-funnel'
+            icon='i-heroicons-funnel-20-solid'
             @click='isOpen = true'
             v-if='$device.isMobile'
             size='xl'
@@ -137,7 +137,7 @@ const sortOptionsSelected = ref('newest')
           />
 
           <UButton
-            icon='i-heroicons-list-bullet'
+            icon='i-heroicons-list-bullet-20-solid'
             size='xl'
             :color='resViewMode === "list" ? "primary" : "gray"'
             variant='solid'
@@ -147,7 +147,7 @@ const sortOptionsSelected = ref('newest')
           />
 
           <UButton
-            icon='i-heroicons-map'
+            icon='i-heroicons-map-20-solid'
             size='xl'
             :color='resViewMode === "map" ? "primary" : "gray"'
             variant='solid'
