@@ -18,7 +18,8 @@ const props = defineProps<{
   profiles: Profile[]
 }>()
 
-// Calculamos el centro basado en la primera ubicación o usamos un valor por defecto
+const selectedMarkerId = ref<string | null>(null)
+
 const center = computed(() => {
   if (props.profiles && props.profiles.length > 0) {
     return {
@@ -26,7 +27,7 @@ const center = computed(() => {
       lng: props.profiles[0].location.lng
     }
   }
-  return {lat: 40.4168, lng: -3.7038} // Centro por defecto en Madrid
+  return {lat: 40.4168, lng: -3.7038}
 })
 
 const drawing = ref(false)
@@ -43,14 +44,20 @@ const buildMarker = (profile: Profile) => {
   }
 }
 
+const onMarkerClick = (profileId: string) => {
+  if (selectedMarkerId.value === profileId) {
+    selectedMarkerId.value = null
+  } else {
+    selectedMarkerId.value = profileId
+  }
+}
+
 const enableDrawZone = () => {
   drawing.value = true
-
   drawingManager = new google.maps.drawing.DrawingManager({
     drawingMode: google.maps.drawing.OverlayType.POLYGON,
     drawingControl: false
   })
-
   drawingManager.setMap(map.value?.map)
 }
 
@@ -75,8 +82,9 @@ const disableDrawZone = () => {
       v-for='profile in profiles'
       :key='profile.id'
       :options='buildMarker(profile)'
+      @click="() => onMarkerClick(profile.id)"
     >
-      <InfoWindow>
+      <InfoWindow :model-value="selectedMarkerId === profile.id">
         <ProductCardMap :data='profile' />
       </InfoWindow>
     </Marker>
