@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type {FormError, FormSubmitEvent} from '#ui/types'
-import useProductsDB from "~/composables/useProductsDB";
+import useProfilesDB from "~/composables/useProfilesDB";
 import useFileTools from "~/composables/useFileTools";
 
 const supabaseUser = useSupabaseUser()
-const {get} = useProductsDB()
+const {get} = useProfilesDB()
 const {toBase64} = useFileTools()
 
 const userProfile = await get(supabaseUser.value.id)

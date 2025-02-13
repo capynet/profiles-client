@@ -1,7 +1,8 @@
 <script setup lang='ts'>
 import { useFilters } from '~/composables/useFilters'
+import type Profile from "~/Models/Profile";
 
-const data = [
+const data: Profile[] = [
   {
     id: '1',
     display: true,
@@ -238,13 +239,13 @@ watch(sortOptionsSelected, (newVal) => {
         </URadioGroup>
       </div>
 
-      <ProductsGrid
+      <ProfilesGrid
         v-if='resViewMode === "list"'
         :profiles='filteredData'
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:p-4"
       />
 
-      <ProductsMap v-if='resViewMode === "map"' :profiles='filteredData' />
+      <ProfilesMap v-if='resViewMode === "map"' :profiles='filteredData' />
 
     </div>
   </div>

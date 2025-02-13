@@ -1,8 +1,9 @@
 <script setup lang='ts'>
 import {GoogleMap, Marker, InfoWindow, CustomControl} from 'vue3-google-map'
+import type Profile from "~/Models/Profile";
 
 const props = defineProps<{
-  profiles: Record<any, any>
+  profiles: Profile[]
 }>()
 
 const selectedMarkerId = ref<string | null>(null)
@@ -76,7 +77,7 @@ const visibleProfiles = computed(() =>
       @click="() => onMarkerClick(profile.id)"
     >
       <InfoWindow :model-value="selectedMarkerId === profile.id">
-        <ProductCardMap :data='profile' />
+        <ProfileCardMap :profile='profile' />
       </InfoWindow>
     </Marker>
 

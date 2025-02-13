@@ -1,26 +1,22 @@
 <script setup lang='ts'>
-interface ProfileData {
-  id: string
-  name: string
-  image: string
-}
+import type Profile from "~/Models/Profile";
 
 const props = defineProps<{
-  data: ProfileData
+  profile: Profile
 }>()
 </script>
 
 <template>
   <div>
-    <NuxtLink :to="`/profile/${data.id}`">
+    <NuxtLink :to="`/profile/${profile.id}`">
       <img
-        :src="data.image"
-        :alt="data.name"
+        :src="profile.image"
+        :alt="profile.name"
         class="w-[162px] h-[288px] object-cover"
       />
 
       <div class="pt-3 pb-1 text-center">
-        <h5 class="text-gray-900">{{ data.name }}</h5>
+        <h5 class="text-gray-900">{{ profile.name }}</h5>
       </div>
     </NuxtLink>
   </div>

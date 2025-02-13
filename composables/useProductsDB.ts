@@ -1,13 +1,13 @@
-import type Product from "~/Models/Product";
+import type Profile from "~/Models/Profile";
 
-export default function useProductsDB() {
-    type Model = Product
-    const TABLE_NAME = 'products'
+export default function useProfilesDB() {
+    type Model = Profile
+    const TABLE_NAME = 'profiles'
     const supabase = useSupabaseClient()
 
     const get = async (id: string) => {
         const query = await supabase
-            .rpc('get_product', {user_input: id})
+            .rpc('get_profile', {user_input: id})
             .single<Model>()
 
         return query.data
