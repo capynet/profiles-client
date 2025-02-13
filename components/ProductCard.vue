@@ -34,7 +34,7 @@ const props = defineProps<{
         <h5 class='text-xl font-bold tracking-tight text-gray-900 dark:text-white mb-2'>{{ data.name }}</h5>
 
         <p class='text-sm text-gray-600 dark:text-gray-400 line-clamp-3'>
-          {{ data.description }}
+          {{ data.price }}€
         </p>
 
         <div class="flex items-center mt-3 text-xs text-gray-500">

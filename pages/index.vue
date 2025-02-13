@@ -143,9 +143,15 @@ const sortOptions = [
 ]
 
 const sortOptionsSelected = ref('newest')
-const { filters, filteredData } = useFilters(data)
+const { filters, filteredData, sortBy } = useFilters(data)
 // Provide filters to SearchFilters component
 provide('filters', filters)
+
+sortBy.value = sortOptionsSelected.value
+
+watch(sortOptionsSelected, (newVal) => {
+  sortBy.value = newVal
+})
 </script>
 
 <template>

@@ -1,5 +1,5 @@
-import { ref, watch } from 'vue'
-import { debounce } from 'lodash'
+import {ref, watch} from 'vue'
+import {debounce} from 'lodash'
 
 export interface Filters {
     age: number
@@ -18,7 +18,25 @@ export interface Filters {
     }
 }
 
-export function useFilters(initialData: any[]) {
+export interface Item {
+    id: string
+    display: boolean
+    name: string
+    price: number
+    age: number
+    paymentMethods: string[]
+    languages: string[]
+    image: string
+    description: string
+    location: {
+        name: string
+        lat: number
+        lng: number
+    }
+    updatedAt: string
+}
+
+export function useFilters(initialData: Item[]) {
     const data = ref(initialData)
     const filters = ref<Filters>({
         age: 18,
@@ -36,9 +54,10 @@ export function useFilters(initialData: any[]) {
             catalan: true
         }
     })
+    const sortBy = ref<'newest' | 'near' | 'price'>('newest')
 
     const applyFilters = () => {
-        data.value = initialData.map(item => ({
+        let filtered = initialData.map(item => ({
             ...item,
             display: item.age >= filters.value.age &&
                 item.price <= filters.value.priceMax &&
@@ -51,17 +70,34 @@ export function useFilters(initialData: any[]) {
                     filters.value.spokenLangs.italian && item.languages.includes('italian') ||
                     filters.value.spokenLangs.catalan && item.languages.includes('catalan'))
         }))
+
+        filtered.sort((a, b) => {
+            switch (sortBy.value) {
+                case 'newest':
+                    return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+                case 'price':
+                    return a.price - b.price
+                case 'near':
+                    const userLat = 36.7213
+                    const userLng = -4.4217
+                    const distA = Math.sqrt(Math.pow(a.location.lat - userLat, 2) + Math.pow(a.location.lng - userLng, 2))
+                    const distB = Math.sqrt(Math.pow(b.location.lat - userLat, 2) + Math.pow(b.location.lng - userLng, 2))
+                    return distA - distB
+            }
+        })
+
+        data.value = filtered
     }
 
     const debouncedApplyFilters = debounce(applyFilters, 500)
 
-    // Initial filter without debounce
     applyFilters()
 
-    watch(filters, debouncedApplyFilters, { deep: true })
+    watch([filters, sortBy], debouncedApplyFilters, {deep: true})
 
     return {
         filters,
-        filteredData: data
+        filteredData: data,
+        sortBy
     }
 }
