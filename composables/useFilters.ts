@@ -41,7 +41,15 @@ export function useFilters(initialData: any[]) {
         data.value = data.value.map(item => ({
             ...item,
             display: item.age >= filters.value.age &&
-                item.price <= filters.value.priceMax
+                item.price <= filters.value.priceMax &&
+                (filters.value.paymentMethod.cash && item.paymentMethods.includes('cash') ||
+                    filters.value.paymentMethod.creditCard && item.paymentMethods.includes('creditCard') ||
+                    filters.value.paymentMethod.bizum && item.paymentMethods.includes('bizum')) &&
+                (filters.value.spokenLangs.spanish && item.languages.includes('spanish') ||
+                    filters.value.spokenLangs.english && item.languages.includes('english') ||
+                    filters.value.spokenLangs.germany && item.languages.includes('germany') ||
+                    filters.value.spokenLangs.italian && item.languages.includes('italian') ||
+                    filters.value.spokenLangs.catalan && item.languages.includes('catalan'))
         }))
     }
 
