@@ -7,3 +7,4 @@
 - El telefono necesita algunso checkbox para indicar si soporta telegram y ws
 - Cuando se cambie de idiooma deberia hacer alguna animacion? digo para que vea que el txt ha cambiado
 - contador de visitas.
+- Añadir useGeolocation cuando se hace sort por distancia
