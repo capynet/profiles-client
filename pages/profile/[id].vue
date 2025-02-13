@@ -64,7 +64,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col lg:flex-row lg:gap-8 lg:p-8 max-w-7xl mx-auto">
+  <div class="flex flex-col lg:flex-row lg:gap-8 lg:p-0 max-w-7xl mx-auto">
     <!-- Columna izquierda - Galería -->
     <div class="lg:w-3/5">
       <!-- Imagen principal -->

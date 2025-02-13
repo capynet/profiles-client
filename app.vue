@@ -4,7 +4,7 @@ import Header from "~/components/misc/Header.vue";
 
 <template>
   <Header/>
-  <UContainer class="pt-8">
+  <UContainer class="lg:p-0">
     <suspense>
       <NuxtPage/>
     </suspense>

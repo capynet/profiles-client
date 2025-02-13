@@ -244,7 +244,7 @@ watch(sortOptionsSelected, (newVal) => {
       <ProfilesGrid
         v-if='resViewMode === "list"'
         :profiles='filteredData'
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:p-4"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:p-4 lg:px-0"
       />
 
       <ProfilesMap v-if='resViewMode === "map"' :profiles='filteredData' />
