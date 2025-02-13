@@ -2,7 +2,6 @@
 import type { Filters } from '~/composables/useFilters'
 
 const filters = inject<Ref<Filters>>('filters')
-if (!filters) throw new Error('Filters not provided')
 
 const { age, priceMax, paymentMethod, spokenLangs } = toRefs(filters.value)
 </script>
