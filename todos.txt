@@ -8,3 +8,4 @@
 - Cuando se cambie de idiooma deberia hacer alguna animacion? digo para que vea que el txt ha cambiado
 - contador de visitas.
 - Añadir useGeolocation cuando se hace sort por distancia
+cuando se cargan las imagenes de un perfil, que se haga una precarga de las imagenes en alta def.
