@@ -56,6 +56,7 @@ const data = [
   },
   {
     id: '5',
+    display: true,
     name: 'Tienda Natural PetFood',
     price: 30,
     age: 40,
@@ -68,6 +69,7 @@ const data = [
   },
   {
     id: '6',
+    display: true,
     name: 'Adiestramiento Canino K9',
     price: 40,
     age: 60,
@@ -80,6 +82,7 @@ const data = [
   },
   {
     id: '7',
+    display: true,
     name: 'Spa & Grooming VIP Pets',
     price: 70,
     age: 18,
@@ -92,6 +95,7 @@ const data = [
   },
   {
     id: '8',
+    display: true,
     name: 'Centro Veterinario Costa del Sol',
     price: 50,
     age: 21,
@@ -104,6 +108,7 @@ const data = [
   },
   {
     id: '9',
+    display: true,
     name: 'Mascoting - Cuidado a Domicilio',
     price: 20,
     age: 18,
@@ -116,6 +121,7 @@ const data = [
   },
   {
     id: '10',
+    display: true,
     name: 'Fisioterapia Animal FisioVet',
     price: 45,
     age: 21,

@@ -37,14 +37,19 @@ export function useFilters(initialData: any[]) {
         }
     })
 
-    const updateData = debounce(() => {
+    const applyFilters = () => {
         data.value = data.value.map(item => ({
             ...item,
             display: item.age >= filters.value.age
         }))
-    }, 500)
+    }
 
-    watch(filters, updateData, { deep: true })
+    const debouncedApplyFilters = debounce(applyFilters, 500)
+
+    // Initial filter without debounce
+    applyFilters()
+
+    watch(filters, debouncedApplyFilters, { deep: true })
 
     return {
         filters,
