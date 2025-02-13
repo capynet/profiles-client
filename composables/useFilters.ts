@@ -38,7 +38,7 @@ export function useFilters(initialData: any[]) {
     })
 
     const applyFilters = () => {
-        data.value = data.value.map(item => ({
+        data.value = initialData.map(item => ({
             ...item,
             display: item.age >= filters.value.age &&
                 item.price <= filters.value.priceMax &&

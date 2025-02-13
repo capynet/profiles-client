@@ -227,7 +227,9 @@ provide('filters', filters)
         :profiles='filteredData'
         class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:p-4"
       />
-      <ProductsMap v-if='resViewMode === "map"' :profiles='data' />
+
+      <ProductsMap v-if='resViewMode === "map"' :profiles='filteredData' />
+
     </div>
   </div>
 </template>

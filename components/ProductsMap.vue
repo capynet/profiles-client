@@ -19,7 +19,7 @@ const center = computed(() => {
 
 const drawing = ref(false)
 const map = ref(null)
-let drawingManager = null
+// let drawingManager = null
 
 const buildMarker = (profile: Profile) => {
   return {
@@ -39,19 +39,23 @@ const onMarkerClick = (profileId: string) => {
   }
 }
 
-const enableDrawZone = () => {
-  drawing.value = true
-  drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.POLYGON,
-    drawingControl: false
-  })
-  drawingManager.setMap(map.value?.map)
-}
+// const enableDrawZone = () => {
+//   drawing.value = true
+//   drawingManager = new google.maps.drawing.DrawingManager({
+//     drawingMode: google.maps.drawing.OverlayType.POLYGON,
+//     drawingControl: false
+//   })
+//   drawingManager.setMap(map.value?.map)
+// }
+//
+// const disableDrawZone = () => {
+//   drawing.value = false
+//   drawingManager.setMap(null)
+// }
 
-const disableDrawZone = () => {
-  drawing.value = false
-  drawingManager.setMap(null)
-}
+const visibleProfiles = computed(() =>
+  props.profiles.filter(profile => profile.display)
+)
 </script>
 
 <template>
@@ -66,7 +70,7 @@ const disableDrawZone = () => {
     :styles='[{"featureType": "poi", "stylers": [{ "visibility": "off" }]}]'
   >
     <Marker
-      v-for='profile in profiles'
+      v-for='profile in visibleProfiles'
       :key='profile.id'
       :options='buildMarker(profile)'
       @click="() => onMarkerClick(profile.id)"
@@ -76,32 +80,32 @@ const disableDrawZone = () => {
       </InfoWindow>
     </Marker>
 
-    <CustomControl position='BOTTOM_CENTER' v-if='!drawing'>
-      <UButton
-        icon='i-heroicons-pencil'
-        size='xl'
-        color='gray'
-        variant='solid'
-        label='Draw your preferred zone'
-        :trailing='false'
-        @click='enableDrawZone'
-        class='mb-4'
-      />
-    </CustomControl>
+<!--    <CustomControl position='BOTTOM_CENTER' v-if='!drawing'>-->
+<!--      <UButton-->
+<!--        icon='i-heroicons-pencil'-->
+<!--        size='xl'-->
+<!--        color='gray'-->
+<!--        variant='solid'-->
+<!--        label='Draw your preferred zone'-->
+<!--        :trailing='false'-->
+<!--        @click='enableDrawZone'-->
+<!--        class='mb-4'-->
+<!--      />-->
+<!--    </CustomControl>-->
 
-    <CustomControl position='BOTTOM_CENTER' v-if='drawing'>
-      <div class='bg-amber-300 p-3 mb-4 text-black text-sm flex items-center'>
-        <p class='mr-2'>Mark your area of interest by clicking on the map.</p>
-        <UButton
-          icon='i-heroicons-x-mark'
-          size='sm'
-          color='gray'
-          variant='solid'
-          label='Cancel'
-          :trailing='false'
-          @click='disableDrawZone'
-        />
-      </div>
-    </CustomControl>
+<!--    <CustomControl position='BOTTOM_CENTER' v-if='drawing'>-->
+<!--      <div class='bg-amber-300 p-3 mb-4 text-black text-sm flex items-center'>-->
+<!--        <p class='mr-2'>Mark your area of interest by clicking on the map.</p>-->
+<!--        <UButton-->
+<!--          icon='i-heroicons-x-mark'-->
+<!--          size='sm'-->
+<!--          color='gray'-->
+<!--          variant='solid'-->
+<!--          label='Cancel'-->
+<!--          :trailing='false'-->
+<!--          @click='disableDrawZone'-->
+<!--        />-->
+<!--      </div>-->
+<!--    </CustomControl>-->
   </GoogleMap>
 </template>
