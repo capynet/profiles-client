@@ -1,5 +1,5 @@
 import {ref, watch} from 'vue'
-import {debounce} from 'lodash'
+import debounce from 'lodash/debounce'
 import {Item, Filters} from '~/Models/Filters'
 
 export function useFilters(initialData: Item[]) {
