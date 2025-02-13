@@ -1,4 +1,5 @@
 import { ref, watch } from 'vue'
+import { debounce } from 'lodash'
 
 export interface Filters {
     age: number
@@ -36,12 +37,14 @@ export function useFilters(initialData: any[]) {
         }
     })
 
-    watch(filters, () => {
+    const updateData = debounce(() => {
         data.value = data.value.map(item => ({
             ...item,
             display: item.age >= filters.value.age
         }))
-    }, { deep: true })
+    }, 500)
+
+    watch(filters, updateData, { deep: true })
 
     return {
         filters,
