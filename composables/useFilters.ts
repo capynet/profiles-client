@@ -22,7 +22,7 @@ export function useFilters(initialData: any[]) {
     const data = ref(initialData)
     const filters = ref<Filters>({
         age: 18,
-        priceMax: 1,
+        priceMax: 200,
         paymentMethod: {
             cash: true,
             creditCard: true,
@@ -40,7 +40,8 @@ export function useFilters(initialData: any[]) {
     const applyFilters = () => {
         data.value = data.value.map(item => ({
             ...item,
-            display: item.age >= filters.value.age
+            display: item.age >= filters.value.age &&
+                item.price <= filters.value.priceMax
         }))
     }
 
