@@ -264,19 +264,6 @@ watch(sortOptionsSelected, (newVal) => {
   @apply mr-0;
 }
 
-/* Estilos para las tarjetas del grid */
-.products-grid > div {
-  @apply w-full h-full transition-transform duration-200 hover:scale-[1.02];
-}
-
-.products-grid img {
-  @apply w-full h-48 object-cover rounded-t-lg;
-}
-
-.products-grid .card-content {
-  @apply p-4 bg-white rounded-b-lg;
-}
-
 html {
   overflow-y: scroll;
   scrollbar-gutter: stable;
