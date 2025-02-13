@@ -1,5 +1,5 @@
 // composables/useFilters.ts
-import { ref, computed } from 'vue'
+import {ref, computed} from 'vue'
 
 export interface Filters {
     age: number
@@ -37,13 +37,15 @@ export function useFilters(initialData: any[]) {
     })
 
     const filteredData = computed(() => {
-        console.log(initialData);
-        return initialData.filter(item => {
-
-            if (item.age < filters.value.age) return false
-
-            return true
+        initialData.forEach(item => {
+            if (item.age >= filters.value.age) {
+                item.display = true
+            } else {
+                item.display = false
+            }
         })
+
+        return initialData
     })
 
     return {

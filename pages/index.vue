@@ -4,6 +4,7 @@ import { useFilters } from '~/composables/useFilters'
 const data = [
   {
     id: '1',
+    display: true,
     name: 'Lola - Peluquería Canina',
     price: 25,
     age: 18,
@@ -16,6 +17,7 @@ const data = [
   },
   {
     id: '2',
+    display: true,
     name: 'Hotel Mascotas Happy Tails',
     price: 45,
     age: 21,
@@ -28,6 +30,7 @@ const data = [
   },
   {
     id: '3',
+    display: true,
     name: 'Veterinaria El Palo',
     price: 35,
     age: 50,
@@ -40,6 +43,7 @@ const data = [
   },
   {
     id: '4',
+    display: true,
     name: 'Paseador Profesional Carlos',
     price: 15,
     age: 30,
