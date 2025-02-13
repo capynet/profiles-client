@@ -1,4 +1,7 @@
 <script setup lang='ts'>
+import ColorModePicker from "~/components/misc/ColorModePicker.vue";
+import UserMenu from "~/components/misc/UserMenu.vue";
+
 const {locale} = useI18n()
 
 const languagesMap = {

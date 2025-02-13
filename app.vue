@@ -1,8 +1,12 @@
+<script setup lang="ts">
+import Header from "~/components/misc/Header.vue";
+</script>
+
 <template>
-  <Header />
+  <Header/>
   <UContainer class="pt-8">
     <suspense>
-      <NuxtPage />
+      <NuxtPage/>
     </suspense>
   </UContainer>
 </template>

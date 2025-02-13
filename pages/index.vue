@@ -1,6 +1,8 @@
 <script setup lang='ts'>
 import { useFilters } from '~/composables/useFilters'
 import type Profile from "~/Models/Profile";
+import ProfilesGrid from "~/components/lists/ProfilesGrid.vue";
+import ProfilesMap from "~/components/lists/ProfilesMap.vue";
 
 const data: Profile[] = [
   {

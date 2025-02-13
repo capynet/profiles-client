@@ -12,7 +12,6 @@ export default defineNuxtConfig({
         '@nuxt/image',
     ],
     image: {
-        // Configura tu proveedor aquí o usa el default
         provider: 'ipx',
         screens: {
             xs: 320,
