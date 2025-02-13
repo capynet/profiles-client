@@ -1,21 +1,8 @@
 <script setup lang='ts'>
 import {GoogleMap, Marker, InfoWindow, CustomControl} from 'vue3-google-map'
 
-interface Profile {
-  id: string
-  name: string
-  image: string
-  description: string
-  location: {
-    name: string
-    lat: number
-    lng: number
-  }
-  updatedAt: string
-}
-
 const props = defineProps<{
-  profiles: Profile[]
+  profiles: Record<any, any>
 }>()
 
 const selectedMarkerId = ref<string | null>(null)
