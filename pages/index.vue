@@ -257,4 +257,10 @@ provide('filters', filters)
 .products-grid .card-content {
   @apply p-4 bg-white rounded-b-lg;
 }
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
 </style>
