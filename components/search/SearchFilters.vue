@@ -1,18 +1,10 @@
 <script setup lang='ts'>
-const age = ref(18)
-const priceMax = ref(1)
-const paymentMethod = ref({
-  cash: true,
-  creditCard: true,
-  bizum: true
-})
-const spokenLangs = ref({
-  spanish: true,
-  english: true,
-  germany: true,
-  italian: true,
-  catalan: true
-})
+import type { Filters } from '~/composables/useFilters'
+
+const filters = inject<Ref<Filters>>('filters')
+if (!filters) throw new Error('Filters not provided')
+
+const { age, priceMax, paymentMethod, spokenLangs } = toRefs(filters.value)
 </script>
 
 <template>
