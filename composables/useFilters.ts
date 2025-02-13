@@ -1,5 +1,4 @@
-// composables/useFilters.ts
-import {ref, computed} from 'vue'
+import { ref, watch } from 'vue'
 
 export interface Filters {
     age: number
@@ -19,6 +18,7 @@ export interface Filters {
 }
 
 export function useFilters(initialData: any[]) {
+    const data = ref(initialData)
     const filters = ref<Filters>({
         age: 18,
         priceMax: 1,
@@ -36,20 +36,15 @@ export function useFilters(initialData: any[]) {
         }
     })
 
-    const filteredData = computed(() => {
-        initialData.forEach(item => {
-            if (item.age >= filters.value.age) {
-                item.display = true
-            } else {
-                item.display = false
-            }
-        })
-
-        return initialData
-    })
+    watch(filters, () => {
+        data.value = data.value.map(item => ({
+            ...item,
+            display: item.age >= filters.value.age
+        }))
+    }, { deep: true })
 
     return {
         filters,
-        filteredData
+        filteredData: data
     }
 }
