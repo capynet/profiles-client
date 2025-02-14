@@ -1,23 +1,25 @@
 # Credentials:
 
+
+En local para arrancar supabase necesito:
+supabase start
+
+Si es la primera vez que habilito login de google tengo que ir a https://supabase.com/dashboard/project/uobyiqdydwtczllucosc/auth/providers habilitar google y proporcionarle las credenciales que hay en https://console.cloud.google.com/apis/credentials?project=malagaescorts&pli=1&inv=1&invt=AbpjUA
+Client id: 389805072647-2mhqhdnn0e62sruhmqntrinhbf5kbpfo.apps.googleusercontent.com" 
+GOOGLE_SECRET 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
+
+Nombre del proyecto: Profiles
+Clave de la DB: cCiKARgE7fX7$C!
+Project url: https://uobyiqdydwtczllucosc.supabase.co
+Api key publica: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvYnlpcWR5ZHd0Y3psbHVjb3NjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk1NDA3NjYsImV4cCI6MjA1NTExNjc2Nn0.ygnjZ4bHwVcJ4bjhpoZtfzGHAeV9z2GNhYOL9YF8j3A
+
+
 Supabase
-
-Project:
-escorts-malaga / 3@Jyk!2gwNyb5G4
-
-Project API keys
 
 
 ENV file
-SUPABASE_URL="https://duqrknzvzheruzonllie.supabase.co"
-SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1cXJrbnp2emhlcnV6b25sbGllIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDA2NDc0NCwiZXhwIjoyMDE1NjQwNzQ0fQ.yqiY2XmL3qRaCjaaDhEAxeXmPPadwfu38xsAMSI-BI4"
-
-
-Anon / public : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1cXJrbnp2emhlcnV6b25sbGllIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDAwNjQ3NDQsImV4cCI6MjAxNTY0MDc0NH0.lJ8QKHoK4lawKOhNjuznERbe2A1EIg5oEw-77SpS3DY
-
-Secreta (no usar nuca del cliente) eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImR1cXJrbnp2emhlcnV6b25sbGllIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMDA2NDc0NCwiZXhwIjoyMDE1NjQwNzQ0fQ.yqiY2XmL3qRaCjaaDhEAxeXmPPadwfu38xsAMSI-BI4
-
-url: https://duqrknzvzheruzonllie.supabase.co
+SUPABASE_URL="https://uobyiqdydwtczllucosc.supabase.co"
+SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVvYnlpcWR5ZHd0Y3psbHVjb3NjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzk1NDA3NjYsImV4cCI6MjA1NTExNjc2Nn0.ygnjZ4bHwVcJ4bjhpoZtfzGHAeV9z2GNhYOL9YF8j3A"
 
 callback url para supabase https://duqrknzvzheruzonllie.supabase.co/auth/v1/callback
 /home/capy/www/profiles/client/misc/credentials.json esta guardado por las dudas. no es que lo use.
