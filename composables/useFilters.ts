@@ -1,9 +1,9 @@
 import {ref, watch} from 'vue'
 import debounce from 'lodash/debounce'
-import {Item, Filters} from '~/Models/Filters'
+import type {Item, Filters} from '~/Models/Filters'
 
-export function useFilters(initialData: Item[]) {
-    const data = ref(initialData)
+export function useFilters(initialData: Ref<Item[] | undefined>) {
+    const data = ref<Item[]>([])
     const filters = ref<Filters>({
         age: 18,
         priceMax: 200,
@@ -23,7 +23,9 @@ export function useFilters(initialData: Item[]) {
     const sortBy = ref<'newest' | 'near' | 'price'>('newest')
 
     const applyFilters = () => {
-        let filtered = initialData.map(item => ({
+        if (!initialData.value) return
+
+        let filtered = initialData.value.map(item => ({
             ...item,
             display: item.age >= filters.value.age &&
                 item.price <= filters.value.priceMax &&
@@ -57,8 +59,10 @@ export function useFilters(initialData: Item[]) {
 
     const debouncedApplyFilters = debounce(applyFilters, 500)
 
-    applyFilters()
+    // Watch for changes in initialData and apply filters
+    watch(initialData, applyFilters, {immediate: true})
 
+    // Watch for filter changes
     watch([filters, sortBy], debouncedApplyFilters, {deep: true})
 
     return {
